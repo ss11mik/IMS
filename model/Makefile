@@ -2,7 +2,7 @@
 BINARY=ims
 
 all:
-	g++ main.c -o $(BINARY)
+	g++ -lsimlib main.c -o $(BINARY)
 
 clean:
 	rm $(BINARY)
