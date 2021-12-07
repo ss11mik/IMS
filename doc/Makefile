@@ -1,4 +1,11 @@
- 
+# file: documentation Makefile
+# project: "SHO ve výrobě"
+# course: IMS
+# authors: xmikul69, zpodes05
+#   @ VUT FIT, Brno
+# date: 2021
+#
+
 
 all:
 	pdflatex ims.tex
