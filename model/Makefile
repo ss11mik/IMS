@@ -10,7 +10,7 @@ BINARY=ims
 OUTPUT=model.out
 
 all:
-	g++ -lsimlib main.c -o $(BINARY)
+	g++ main.c -o $(BINARY) -lsimlib -lm
 
 clean:
 	rm $(BINARY) $(OUTPUT) | true
