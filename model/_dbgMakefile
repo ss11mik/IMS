@@ -3,7 +3,7 @@ MODELOUT = model.out
 CC = g++
 LINKER = g++
 DEBUGDIR = ./debug
-SOURCEDIR = ./src
+SOURCEDIR = .
 BUILDDIR = ./build
 CFLAGS = -std=c++11 -Wall -Werror -Wunused-function -Wreturn-type -Wunused-variable -lsimlib -lm
 DEBUGCFLAGS = -std=c++11 -g -Wall -Werror -Wunused-function -Wreturn-type -Wunused-variable -DDEBUG=1 -lsimlib -lm

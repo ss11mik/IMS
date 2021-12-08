@@ -72,3 +72,4 @@ model/ims
 
 #vscode
 .vscode/*
+model/debug/ims
