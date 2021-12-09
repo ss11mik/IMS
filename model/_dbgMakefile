@@ -5,8 +5,8 @@ LINKER = g++
 DEBUGDIR = ./debug
 SOURCEDIR = .
 BUILDDIR = ./build
-CFLAGS = -std=c++11 -Wall -Werror -Wunused-function -Wreturn-type -Wunused-variable -lsimlib -lm
-DEBUGCFLAGS = -std=c++11 -g -Wall -Werror -Wunused-function -Wreturn-type -Wunused-variable -DDEBUG=1 -lsimlib -lm
+CFLAGS = -std=c++17 -Wall -Werror -Wunused-function -Wreturn-type -Wunused-variable -lsimlib -lm
+DEBUGCFLAGS = -std=c++17 -g -Wall -Werror -Wunused-function -Wreturn-type -Wunused-variable -DDEBUG=1 -lsimlib -lm
 LFLAGS = -lsimlib -lm
 
 rwildcard=$(foreach d,$(wildcard $(1:=/*)),$(call rwildcard,$d,$2) $(filter $(subst *,%,$2),$d))
