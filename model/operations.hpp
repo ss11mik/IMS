@@ -5,14 +5,14 @@
 #include <simlib.h>
 
 //cutting, zprofile, bending, enclosing, cutting2,completaion, planting, quality asurance, expedition
-class CuttingOp : Operation{public: void MyConstructor();void MyEnd();};
-class ZProfileOp : Operation{public: void MyConstructor();void MyEnd();};
-class BendingOp : Operation{public: void MyConstructor();void MyEnd();};
-class EnclosingOp : Operation{public: void MyConstructor();void MyEnd();};
-class Cutting2Op : Operation{public: void MyConstructor();void MyEnd();};
-class CompletionOp : Operation{public: void MyConstructor();void MyEnd();};
-class PlantingOp : Operation{public: void MyConstructor();void MyEnd();};
-class QualityAsOp : Operation{public: void MyConstructor();void MyEnd();};
-class ExpeditionOp : Operation{public: void MyConstructor();void MyEnd();};
+class CuttingOp : public Operation{public: void MyConstructor();void MyEnd();};
+class ZProfileOp : public Operation{public: void MyConstructor();void MyEnd();};
+class BendingOp : public Operation{public: void MyConstructor();void MyEnd();};
+class EnclosingOp : public Operation{public: void MyConstructor();void MyEnd();};
+class Cutting2Op : public Operation{public: void MyConstructor();void MyEnd();};
+class CompletionOp : public Operation{public: void MyConstructor();void MyEnd();};
+class PlantingOp : public Operation{public: void MyConstructor();void MyEnd();};
+class QualityAsOp : public Operation{public: void MyConstructor();void MyEnd();};
+class ExpeditionOp : public Operation{public: void MyConstructor();void MyEnd();};
 
 #endif
