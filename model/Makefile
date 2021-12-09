@@ -8,9 +8,11 @@
 
 BINARY=ims
 OUTPUT=model.out
+CFLAGS = -std=c++17 -Wall -Werror -Wunused-function -Wreturn-type -Wunused-variable -lsimlib -lm
+SRCFILES = main.cpp operations.cpp
 
 all:
-	g++ main.cpp -o $(BINARY) -lsimlib -lm
+	g++ $(SRCFILES) -o $(BINARY) $(CFLAGS)
 
 clean:
 	rm $(BINARY) $(OUTPUT) | true

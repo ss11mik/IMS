@@ -9,7 +9,6 @@ public:
 
     virtual void MyConstructor()=0;
     virtual void MyEnd()=0;
-    void Activate();
     void Behavior() {
         MyConstructor();
         //seize stroj & cloveka
