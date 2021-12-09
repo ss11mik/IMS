@@ -10,7 +10,5 @@ void CuttingOp::MyConstructor(){
     this->transportTime = 0.25f;
 }
 void CuttingOp::MyEnd(){
-    Operation* op;
-    op->Activate();
-    // (ZProfileOp())->Activate();
+     (new ZProfileOp)->Activate();
 }
