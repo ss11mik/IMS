@@ -8,6 +8,10 @@
 Facility machines[9];
 int storages[9];
 
+extern int cuttingTrottlePercent;
+int cuttingCycle = 0;
+
+
 void CuttingOp::MyConstructor(){
     this->avgTime = 4;
     this->machine = machines[0];
@@ -16,11 +20,15 @@ void CuttingOp::MyConstructor(){
 }
 void CuttingOp::MyStart(){
     itemsInProduction.push(Time);
-         (new CuttingOp)->Activate();
+    if (cuttingCycle < cuttingTrottlePercent)
+        itemsInProduction.push(Time);
+    cuttingCycle = (cuttingCycle+1)%100;
+    (new CuttingOp)->Activate();
 }
 void CuttingOp::MyEnd(){
      (new ZProfileOp)->Activate();
-
+     if (cuttingCycle < cuttingTrottlePercent)
+        (new ZProfileOp)->Activate();
 }
 
 

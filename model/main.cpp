@@ -13,8 +13,8 @@
 #include <simlib.h>
 
 // the time span of simulation
-// 60 * 8 * 7 minutes * 10 weeks = 10 weeks
-#define SIM_TIME_SPAN 33600
+// 60 * 8 * 7 minutes * 100 = 100 weeks
+#define SIM_TIME_SPAN 336000
 
 // number of actual employees available in company
 #define EMPLOYEES 13
@@ -23,6 +23,7 @@
 using namespace simlib3;
 
 int minTransports = 1;
+int cuttingTrottlePercent = 0;
 
 #include "stats.hpp"
 #include "operations.hpp"
