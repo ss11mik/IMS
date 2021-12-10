@@ -69,10 +69,9 @@ int main(int args, char* argv[]) {
     //Print(" model2 - SIMLIB/C++ example\n");
     Print("Zacatek simulace\n");
 
-    SetOutput("model.out");
+   // SetOutput("model.out");
     Init(0, SIM_TIME_SPAN);
     (new CuttingOp)->Activate();
-  //  (new Tyden)->Activate();
 
     Run();
 
