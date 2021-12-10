@@ -13,26 +13,9 @@
 #include <simlib.h>
 
 
-Histogram dobaVProdukci("dobaVProdukci", 0, 100, 30);
+Histogram dobaVProdukci("dobaVProdukci", 14, .2, 60);
 
 std::queue<int> itemsInProduction;
 
-class mStat: public Process {
-   void Behavior() {
-      Print("cas, v produkci, TODO var names here\n");
-      while (1) {
-         Print(static_cast<int>(Time));
-         Print(",");
-         Print(itemsInProduction.size());
-         Print(",");
-   //      std::cout << pocetSmenNepracDny + pocetSmenVikendy << ",";
-
-      //   pocetSmenNepracDny = 0;
-         Print("\n");
-
-  //       Wait(STAT_PERIOD);
-      }
-   }
-};
 
 #endif
