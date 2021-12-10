@@ -33,33 +33,6 @@ int availableEmployees = EMPLOYEES;
 
 
 
-class Transport: public Process {
-public:
-    Transport(float avgTime, int employees) {
-        this->avgTime = avgTime;
-        this->employees = employees;
-    };
-
-    float avgTime;
-    int employees;
-
-    void Behavior() {
-        Wait(avgTime);
-    }
-};
-
-
-
-class Storage: public Process {
-   void Behavior() {
-
-   }
-};
-
-
-
-
-
 int main(int args, char* argv[]) {
 
 
