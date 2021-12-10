@@ -19,17 +19,13 @@
 // number of actual employees available in company
 #define EMPLOYEES 13
 
+//using namespace std;
 using namespace simlib3;
 
-#include "operations.hpp"
 #include "stats.cpp"
-
-//using namespace std;
-//using namespace simlib3;
+#include "operations.hpp"
 
 
-// number of employees not doing anything at the moment
-int availableEmployees = EMPLOYEES;
 
 
 

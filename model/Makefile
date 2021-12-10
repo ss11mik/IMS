@@ -9,7 +9,7 @@
 BINARY=ims
 OUTPUT=model.out
 CFLAGS = -std=c++17 -Wall -Werror -Wunused-function -Wreturn-type -Wunused-variable -lsimlib -lm
-SRCFILES = main.cpp operations.cpp operations.hpp operation.hpp stats.cpp
+SRCFILES = main.cpp operations.cpp operations.hpp operation.hpp
 
 all:
 	g++ $(SRCFILES) -o $(BINARY) $(CFLAGS)

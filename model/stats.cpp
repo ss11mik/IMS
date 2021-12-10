@@ -6,17 +6,25 @@
   * date: 2021
   */
 
+#ifndef STATS_H
+#define STATS_H
+
+#include <queue>
 #include <simlib.h>
 
 //TODO
 #define STAT_PERIOD 200
 
 
+std::queue<int> itemsInProduction;
+
 class mStat: public Process {
    void Behavior() {
-      Print("cas, TODO var names here\n");
+      Print("cas, v produkci, TODO var names here\n");
       while (1) {
          Print(static_cast<int>(Time));
+         Print(",");
+         Print(itemsInProduction.size());
          Print(",");
    //      std::cout << pocetSmenNepracDny + pocetSmenVikendy << ",";
 
@@ -33,3 +41,5 @@ class ClearStat: public Process {
 
    }
 };
+
+#endif

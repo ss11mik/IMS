@@ -1,5 +1,8 @@
 #include "operations.hpp"
 #include <simlib.h>
+#include <queue>
+
+extern std::queue<int> itemsInProduction;
 
 //cutting, zprofile, bending, enclosing, cutting2,completaion, planting, quality asurance, expedition
 
@@ -8,6 +11,8 @@ void CuttingOp::MyConstructor(){
     //this->employees = 1;
     //this->employesStartIndex = 0;
     this->transportTime = 0.25f;
+
+    itemsInProduction.push(Time);
 }
 void CuttingOp::MyEnd(){
      (new ZProfileOp)->Activate();
@@ -98,5 +103,6 @@ void ExpeditionOp::MyConstructor(){
     this->transportTime = 0.25f;
 }
 void ExpeditionOp::MyEnd(){
+    itemsInProduction.pop();
     //TODO: void
 }
