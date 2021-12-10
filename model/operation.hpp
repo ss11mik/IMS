@@ -9,24 +9,49 @@ public:
 
     virtual void MyConstructor()=0;
     virtual void MyEnd()=0;
+    virtual bool CanTransport()
+    {
+        return true;
+    }
     void Behavior() {
         MyConstructor();
+
         //seize stroj & cloveka
+        if(employe1!=NULL)
+            employe1->Seize(this);
+        if(employe2!=NULL)
+            employe2->Seize(this);
+        if(machine!=NULL)
+            machine->Seize(this);
+
         //TODO exp or sth
-        Wait(avgTime);
+        auto time = Normal(avgTime,sigma);
+        Wait(time);
+
         //release stroj
+        if(machine!=NULL)
+            machine->Release(this);
+
+        //if()
+        //transport
         if(transportTime!=0)
         {
             Wait(transportTime);//todo: delta
         }
+
         //release cloveka
+        if(employe1!=NULL)
+            employe1->Release(this);
+        if(employe2!=NULL)
+            employe2->Release(this);
+
         MyEnd();
     }
     protected:
         float avgTime;
-        float delta;
-        int employesStartIndex = 0;
-        int employees = 1;
+        float sigma;
+        Facility* employe1, *employe2 = NULL;
+        Facility* machine = NULL;
         float transportTime = 0;
 };
 
