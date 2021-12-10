@@ -89,6 +89,7 @@ void PlantingOp::MyConstructor(){
     this->transportTime = 1;
 }
 void PlantingOp::MyEnd(){
+    //TODO: product is completed. calculate the total time
     //TODO: Sklaodvani
 }
 
