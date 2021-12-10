@@ -1,3 +1,11 @@
+ /*
+  * project: "SHO ve výrobě"
+  * course: IMS
+  * authors: xmikul69, zpodes05
+  *    @ VUT FIT, Brno
+  * date: 2021
+  */
+
 #include "operations.hpp"
 #include <simlib.h>
 #include <queue>
