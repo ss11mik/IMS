@@ -22,6 +22,8 @@
 //using namespace std;
 using namespace simlib3;
 
+int minTransports = 1;
+
 #include "stats.cpp"
 #include "operations.hpp"
 

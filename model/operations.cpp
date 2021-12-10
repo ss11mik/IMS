@@ -8,11 +8,12 @@ extern Histogram dobaVProdukci;
 //cutting, zprofile, bending, enclosing, cutting2,completaion, planting, quality asurance, expedition
 
 Facility machines[9];
+int storages[9];
 
 void CuttingOp::MyConstructor(){
     this->avgTime = 4;
     this->machine = machines[0];
-
+    this->currentStorage = &storages[0];
     this->transportTime = 0.25f;
 }
 void CuttingOp::MyStart(){
@@ -27,7 +28,7 @@ void CuttingOp::MyEnd(){
 void ZProfileOp::MyConstructor(){
     this->avgTime = 1.5f;
     this->machine = machines[1];
-
+    this->currentStorage = &storages[0];
     this->transportTime = 0.25f;
 }
 void ZProfileOp::MyEnd(){
@@ -38,7 +39,7 @@ void ZProfileOp::MyEnd(){
 void BendingOp::MyConstructor(){
     this->avgTime = 2;
     this->machine = machines[2];
-
+    this->currentStorage = &storages[0];
     this->transportTime = 0.5f;
 }
 void BendingOp::MyEnd(){
@@ -49,7 +50,7 @@ void BendingOp::MyEnd(){
 void EnclosingOp::MyConstructor(){
     this->avgTime = 2;
     this->machine = machines[3];
-
+    this->currentStorage = &storages[0];
     this->transportTime = 1.0f;
 }
 void EnclosingOp::MyEnd(){
@@ -60,7 +61,7 @@ void EnclosingOp::MyEnd(){
 void Cutting2Op::MyConstructor(){
     this->avgTime = 1;
     this->machine = machines[4];
-
+    this->currentStorage = &storages[0];
     this->transportTime = 0;
 }
 void Cutting2Op::MyEnd(){
@@ -71,7 +72,7 @@ void Cutting2Op::MyEnd(){
 void CompletionOp::MyConstructor(){
     this->avgTime = 3;
     this->machine = machines[5];
-
+    this->currentStorage = &storages[0];
     this->transportTime = 0;
 }
 void CompletionOp::MyEnd(){
@@ -83,7 +84,7 @@ void CompletionOp::MyEnd(){
 void PlantingOp::MyConstructor(){
     this->avgTime = 2;
     this->machine = machines[6];
-
+    this->currentStorage = &storages[0];
     this->transportTime = 1;
 }
 void PlantingOp::MyEnd(){
@@ -98,7 +99,7 @@ void PlantingOp::MyEnd(){
 void QualityAsOp::MyConstructor(){
     this->avgTime = 1;
     this->machine = machines[7];
-
+    this->currentStorage = &storages[0];
     this->transportTime = 0.25f;
 }
 void QualityAsOp::MyEnd(){
@@ -111,7 +112,7 @@ void QualityAsOp::MyEnd(){
 void ExpeditionOp::MyConstructor(){
     this->avgTime = 30;
     this->machine = machines[8];
-
+    this->currentStorage = &storages[8];
     this->transportTime = 0;
 }
 void ExpeditionOp::MyEnd(){

@@ -4,6 +4,7 @@
 #include <simlib.h>
 #include <queue>
 
+extern int minTransports;
 
 class Operation: public simlib3::Process {
 
@@ -17,6 +18,7 @@ public:
         return true;
     }
     void Behavior() {
+        this->minTransportCount = minTransports;
         MyConstructor();
 
         //seize stroj & cloveka
@@ -34,7 +36,7 @@ public:
             //seize the transport worker
         }
 
-        if(minTransportCount==*currentTransports)
+        if(minTransportCount==*currentStorage )
         {
             //transport
             if(transportTime!=0)
@@ -51,8 +53,21 @@ public:
         {
             //release the transport worker
         }
-
-        MyEnd();
+        
+        if(transportTime==0)
+            MyEnd();
+        else if(minTransportCount==*currentStorage )
+        {
+            for(int i = 0;i<minTransportCount;i++)
+            {
+                MyEnd();
+            }
+            *currentStorage = 0;
+        }
+        else
+        {
+            (*currentStorage)++;
+        }
     }
     protected:
         double avgTime;
@@ -60,8 +75,8 @@ public:
         Facility* machine = NULL;
         float transportTime = 0;
 
-        int minTransportCount = 1;
-        int *currentTransports = &minTransportCount;
+        int minTransportCount = 0;
+        int *currentStorage = &minTransportCount;
         bool isTransportedByWorker = true;
 };
 
