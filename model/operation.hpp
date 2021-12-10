@@ -36,7 +36,9 @@ public:
             //seize the transport worker
         }
 
-        if(minTransportCount==*currentStorage )
+        (*currentStorage)++;
+
+        if(minTransportCount== *currentStorage)
         {
             //transport
             if(transportTime!=0)
@@ -53,10 +55,11 @@ public:
         {
             //release the transport worker
         }
-        
+
+
         if(transportTime==0)
             MyEnd();
-        else if(minTransportCount==*currentStorage )
+        else if(minTransportCount== *currentStorage )
         {
             for(int i = 0;i<minTransportCount;i++)
             {
@@ -64,10 +67,7 @@ public:
             }
             *currentStorage = 0;
         }
-        else
-        {
-            (*currentStorage)++;
-        }
+
     }
     protected:
         double avgTime;
@@ -75,8 +75,8 @@ public:
         Facility* machine = NULL;
         float transportTime = 0;
 
-        int minTransportCount = 0;
-        int *currentStorage = &minTransportCount;
+        int minTransportCount = 1;
+        int *currentStorage;
         bool isTransportedByWorker = true;
 };
 
