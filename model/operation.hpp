@@ -4,45 +4,6 @@
 #include <simlib.h>
 #include <queue>
 
-class MyFacility
-{
-    private:
-    std::queue<Operation*> waitingProcesses;
-    Operation* currentHolder = ;
-    Facility machine;
-    Facility person;
-    void Check(Operation *op)
-    {
-
-    }
-    public:
-    void SeizeBoth(Operation *op)
-    {
-        if(waitingProcesses.empty())
-        {
-            if(machine.Busy() || person.Busy())
-            {
-                waitingProcesses.push(op);
-            }
-            else
-            {
-                
-            }
-        }
-        else
-        {
-            waitingProcesses.push(op);
-        }
-    }
-    void ReleaseMachine(Operation *op)
-    {
-
-    }
-    void ReleasePerson(Operation *op)
-    {
-
-    }
-};
 
 class Operation: public simlib3::Process {
 
