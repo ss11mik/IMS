@@ -18,17 +18,18 @@ void CuttingOp::MyConstructor(){
 }
 void CuttingOp::MyStart(){
     itemsInProduction.push(Time);
+         (new CuttingOp)->Activate();
 }
 void CuttingOp::MyEnd(){
      (new ZProfileOp)->Activate();
-     (new CuttingOp)->Activate();
+
 }
 
 
 void ZProfileOp::MyConstructor(){
     this->avgTime = 1.5f;
     this->machine = machines[1];
-    this->currentStorage = &storages[0];
+    this->currentStorage = &storages[1];
     this->transportTime = 0.25f;
 }
 void ZProfileOp::MyEnd(){
@@ -39,7 +40,7 @@ void ZProfileOp::MyEnd(){
 void BendingOp::MyConstructor(){
     this->avgTime = 2;
     this->machine = machines[2];
-    this->currentStorage = &storages[0];
+    this->currentStorage = &storages[2];
     this->transportTime = 0.5f;
 }
 void BendingOp::MyEnd(){
@@ -50,7 +51,7 @@ void BendingOp::MyEnd(){
 void EnclosingOp::MyConstructor(){
     this->avgTime = 2;
     this->machine = machines[3];
-    this->currentStorage = &storages[0];
+    this->currentStorage = &storages[3];
     this->transportTime = 1.0f;
 }
 void EnclosingOp::MyEnd(){
@@ -61,7 +62,7 @@ void EnclosingOp::MyEnd(){
 void Cutting2Op::MyConstructor(){
     this->avgTime = 1;
     this->machine = machines[4];
-    this->currentStorage = &storages[0];
+    this->currentStorage = &storages[4];
     this->transportTime = 0;
 }
 void Cutting2Op::MyEnd(){
@@ -72,7 +73,7 @@ void Cutting2Op::MyEnd(){
 void CompletionOp::MyConstructor(){
     this->avgTime = 3;
     this->machine = machines[5];
-    this->currentStorage = &storages[0];
+    this->currentStorage = &storages[5];
     this->transportTime = 0;
 }
 void CompletionOp::MyEnd(){
@@ -84,7 +85,7 @@ void CompletionOp::MyEnd(){
 void PlantingOp::MyConstructor(){
     this->avgTime = 2;
     this->machine = machines[6];
-    this->currentStorage = &storages[0];
+    this->currentStorage = &storages[6];
     this->transportTime = 1;
 }
 void PlantingOp::MyEnd(){
@@ -99,7 +100,7 @@ void PlantingOp::MyEnd(){
 void QualityAsOp::MyConstructor(){
     this->avgTime = 1;
     this->machine = machines[7];
-    this->currentStorage = &storages[0];
+    this->currentStorage = &storages[7];
     this->transportTime = 0.25f;
 }
 void QualityAsOp::MyEnd(){
