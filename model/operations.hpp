@@ -4,6 +4,9 @@
 #include "operation.hpp"
 #include <simlib.h>
 
+extern Facility machines[9];
+extern int storage[9];
+
 //cutting, zprofile, bending, enclosing, cutting2,completaion, planting, quality asurance, expedition
 class CuttingOp : public Operation{public: void MyConstructor();void MyEnd();void MyStart();};
 class ZProfileOp : public Operation{public: void MyConstructor();void MyEnd();};
