@@ -13,8 +13,8 @@
 #include <simlib.h>
 
 // the time span of simulation
-// 60 * 8 * 7 minutes = 1 week
-#define SIM_TIME_SPAN 3360
+// 60 * 8 * 7 minutes * 10 weeks = 10 weeks
+#define SIM_TIME_SPAN 33600
 
 // number of actual employees available in company
 #define EMPLOYEES 13
