@@ -133,7 +133,6 @@ void ExpeditionOp::MyConstructor(){
     this->transportTime = 0;
 }
 void ExpeditionOp::MyEnd(){
-    Print("pop\n");
     dobaVProdukci(Time - itemsInProduction.front());
     itemsInProduction.pop();
     //TODO: void

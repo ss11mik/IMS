@@ -25,8 +25,10 @@ using namespace simlib3;
 int minTransports = 1;
 int cuttingTrottlePercent = 0;
 bool usingOptimizedTransport = false;
+int posliceksCount = 0;
 
 #include "stats.hpp"
+//#include "poslicek.hpp"
 #include "operations.hpp"
 
 
@@ -37,6 +39,9 @@ int main(int args, char* argv[]) {
    // SetOutput("model.out");
     Init(0, SIM_TIME_SPAN);
     (new CuttingOp)->Activate();
+
+//    for (int i = 0; i < posliceksCount; i++)
+//        (new Poslicek)->Activate();
 
     Run();
 

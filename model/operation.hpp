@@ -13,6 +13,7 @@
 #include <queue>
 
 extern int minTransports;
+extern int posliceksCount;
 
 class Operation: public simlib3::Process {
 
@@ -37,46 +38,40 @@ public:
         //auto time = abs(Normal(avgTime, sigma));
         Wait(avgTime);
 
-        //release stroj
-        if(!isTransportedByWorker)
-        {
-            Release(*machine);
-            //seize the transport worker
-        }
-
         (*currentStorage)++;
 
-        if(minTransportCount== *currentStorage)
-        {
-            //transport
-            if(transportTime!=0)
-            {
-                Wait(transportTime);//todo: delta
-            }
-        }
-
-        if(isTransportedByWorker)
+        //release stroj
+        if(posliceksCount > 0)
         {
             Release(*machine);
-        }
-        else
-        {
-            //release the transport worker
-        }
 
 
-        if(transportTime==0)
-            MyEnd();
-        else if(minTransportCount== *currentStorage )
-        {
-            for(int i = 0;i<minTransportCount;i++)
-            {
-                MyEnd();
+            //seize the transport worker
+            Wait(transportTime);
+            //TODO
+        }
+        else {
+
+            if (minTransportCount == *currentStorage) {
+                //transport
+                if(transportTime != 0)
+                {
+                    Wait(transportTime);//todo: delta
+                }
+
+                for(int i = 0; i <minTransportCount; i++)
+                {
+                    MyEnd();
+                }
+                *currentStorage = 0;
+
             }
-            *currentStorage = 0;
+
+            Release(*machine);
         }
 
     }
+
     protected:
         double avgTime;
         double sigma = .3;
@@ -85,7 +80,6 @@ public:
 
         int minTransportCount = 1;
         int *currentStorage;
-        bool isTransportedByWorker = true;
 };
 
 
