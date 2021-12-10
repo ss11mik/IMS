@@ -24,6 +24,7 @@ using namespace simlib3;
 
 int minTransports = 1;
 int cuttingTrottlePercent = 0;
+bool usingOptimizedTransport = false;
 
 #include "stats.hpp"
 #include "operations.hpp"

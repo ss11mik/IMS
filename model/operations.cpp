@@ -19,12 +19,14 @@ int storages[9];
 extern int cuttingTrottlePercent;
 int cuttingCycle = 0;
 
+extern bool usingOptimizedTransport;
 
 void CuttingOp::MyConstructor(){
     this->avgTime = 4;
     this->machine = machines[0];
     this->currentStorage = &storages[0];
-    this->transportTime = 0.25f;
+    this->transportTime = (usingOptimizedTransport)? 0.2f : 0.25f;
+
 }
 void CuttingOp::MyStart(){
     itemsInProduction.push(Time);
@@ -44,7 +46,7 @@ void ZProfileOp::MyConstructor(){
     this->avgTime = 1.5f;
     this->machine = machines[1];
     this->currentStorage = &storages[1];
-    this->transportTime = 0.25f;
+    this->transportTime = (usingOptimizedTransport)? 0.2f : 0.25f;
 }
 void ZProfileOp::MyEnd(){
      (new BendingOp)->Activate();
@@ -55,7 +57,7 @@ void BendingOp::MyConstructor(){
     this->avgTime = 2;
     this->machine = machines[2];
     this->currentStorage = &storages[2];
-    this->transportTime = 0.5f;
+    this->transportTime = (usingOptimizedTransport)? 0.7f : 0.5f;
 }
 void BendingOp::MyEnd(){
      (new EnclosingOp)->Activate();
@@ -66,7 +68,7 @@ void EnclosingOp::MyConstructor(){
     this->avgTime = 2;
     this->machine = machines[3];
     this->currentStorage = &storages[3];
-    this->transportTime = 1.0f;
+    this->transportTime = (usingOptimizedTransport)? 0.2f : 1.0f;
 }
 void EnclosingOp::MyEnd(){
      (new Cutting2Op)->Activate();
@@ -100,7 +102,7 @@ void PlantingOp::MyConstructor(){
     this->avgTime = 2;
     this->machine = machines[6];
     this->currentStorage = &storages[6];
-    this->transportTime = 1;
+    this->transportTime = (usingOptimizedTransport)? 0.5f :1.0f;
 }
 void PlantingOp::MyEnd(){
     //TODO: product is completed. calculate the total time

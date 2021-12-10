@@ -34,8 +34,8 @@ public:
         MyStart();
 
         //TODO exp or sth
-        auto time = abs(Normal(avgTime, sigma));
-        Wait(time);
+        //auto time = abs(Normal(avgTime, sigma));
+        Wait(avgTime);
 
         //release stroj
         if(!isTransportedByWorker)
