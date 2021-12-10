@@ -18,8 +18,11 @@
 
 // number of actual employees available in company
 #define EMPLOYEES 13
+
 using namespace simlib3;
+
 #include "operations.hpp"
+#include "stats.cpp"
 
 //using namespace std;
 //using namespace simlib3;
@@ -57,8 +60,6 @@ class Storage: public Process {
 
 
 
-Facility stacirna;
-
 int main(int args, char* argv[]) {
 
 
@@ -66,12 +67,12 @@ int main(int args, char* argv[]) {
     //Storage storage;
    // Operation qa(1, 1), expedition(30, 1);
 
-    //Print(" model2 - SIMLIB/C++ example\n");
     Print("Zacatek simulace\n");
 
    // SetOutput("model.out");
     Init(0, SIM_TIME_SPAN);
     (new CuttingOp)->Activate();
+    (new mStat)->Activate();
 
     Run();
 
