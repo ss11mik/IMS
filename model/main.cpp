@@ -25,7 +25,7 @@ using namespace simlib3;
 #include "stats.cpp"
 #include "operations.hpp"
 
-
+extern Facility machines[13];
 
 
 
@@ -41,10 +41,16 @@ int main(int args, char* argv[]) {
    // SetOutput("model.out");
     Init(0, SIM_TIME_SPAN);
     (new CuttingOp)->Activate();
-    (new mStat)->Activate();
+    (new CuttingOp)->Activate();
+    (new CuttingOp)->Activate();
+  // (new mStat)->Activate();
 
     Run();
 
+    for (int i = 0; i < 13; i++) {
+        machines[i].Output();
+    }
+    dobaVProdukci.Output();
     Print("Konec simulace\n");
 
     return 0;

@@ -25,7 +25,7 @@ public:
             machine->Seize(this);
 
         //TODO exp or sth
-        auto time = Normal(avgTime,sigma);
+        auto time = abs(Normal(avgTime,sigma));
         Wait(time);
 
         //release stroj
@@ -52,7 +52,7 @@ public:
     }
     protected:
         float avgTime;
-        float sigma;
+        float sigma = 1;
         Facility* employe1, *employe2 = NULL;
         Facility* machine = NULL;
         float transportTime = 0;

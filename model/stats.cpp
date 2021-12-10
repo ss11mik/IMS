@@ -12,9 +12,8 @@
 #include <queue>
 #include <simlib.h>
 
-//TODO
-#define STAT_PERIOD 200
 
+Histogram dobaVProdukci("dobaVProdukci", 0, 1, 30);
 
 std::queue<int> itemsInProduction;
 
@@ -31,14 +30,8 @@ class mStat: public Process {
       //   pocetSmenNepracDny = 0;
          Print("\n");
 
-         Wait(STAT_PERIOD);
+  //       Wait(STAT_PERIOD);
       }
-   }
-};
-
-class ClearStat: public Process {
-   void Behavior() {
-
    }
 };
 

@@ -3,6 +3,7 @@
 #include <queue>
 
 extern std::queue<int> itemsInProduction;
+extern Histogram dobaVProdukci;
 
 //cutting, zprofile, bending, enclosing, cutting2,completaion, planting, quality asurance, expedition
 
@@ -15,10 +16,9 @@ void CuttingOp::MyConstructor(){
     this->machine = machines[0];
 
     this->transportTime = 0.25f;
-
-    itemsInProduction.push(Time);
 }
 void CuttingOp::MyEnd(){
+    itemsInProduction.push(Time);
      (new ZProfileOp)->Activate();
 }
 
@@ -82,7 +82,8 @@ void CompletionOp::MyConstructor(){
     this->transportTime = 0;
 }
 void CompletionOp::MyEnd(){
-     (new ZProfileOp)->Activate();
+
+     (new PlantingOp)->Activate();
 }
 
 
@@ -94,8 +95,12 @@ void PlantingOp::MyConstructor(){
     this->transportTime = 1;
 }
 void PlantingOp::MyEnd(){
+
     //TODO: Sklaodvani
+    (new QualityAsOp)->Activate();
 }
+
+
 
 
 void QualityAsOp::MyConstructor(){
@@ -118,6 +123,8 @@ void ExpeditionOp::MyConstructor(){
     this->transportTime = 0.25f;
 }
 void ExpeditionOp::MyEnd(){
+    Print("pop\n");
+    dobaVProdukci(itemsInProduction.front());
     itemsInProduction.pop();
     //TODO: void
 }
