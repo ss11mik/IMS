@@ -32,12 +32,15 @@ public:
         if(machine!=NULL)
             machine->Release(this);
 
-        //if()
-        //transport
-        if(transportTime!=0)
+        if(minTransportCount==*currentTransports)
         {
-            Wait(transportTime);//todo: delta
+            //transport
+            if(transportTime!=0)
+            {
+                Wait(transportTime);//todo: delta
+            }
         }
+        
 
         //release cloveka
         if(employe1!=NULL)
@@ -53,6 +56,9 @@ public:
         Facility* employe1, *employe2 = NULL;
         Facility* machine = NULL;
         float transportTime = 0;
+
+        int minTransportCount = 1;
+        int *currentTransports = &minTransportCount;
 };
 
 #endif // OPERATION_H

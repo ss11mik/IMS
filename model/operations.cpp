@@ -3,10 +3,14 @@
 
 //cutting, zprofile, bending, enclosing, cutting2,completaion, planting, quality asurance, expedition
 
+Facility employes[13];
+Facility machines[13];
+
 void CuttingOp::MyConstructor(){
     this->avgTime = 4;
-    //this->employees = 1;
-    //this->employesStartIndex = 0;
+    this->employe1 = employes[0];
+    this->machine = machines[0];
+
     this->transportTime = 0.25f;
 }
 void CuttingOp::MyEnd(){
@@ -16,8 +20,10 @@ void CuttingOp::MyEnd(){
 
 void ZProfileOp::MyConstructor(){
     this->avgTime = 1.5;
-    //this->employees = 2;
-    //this->employesStartIndex = 1;
+    this->employe1 = employes[1];
+    this->employe1 = employes[2];
+    this->machine = machines[1];
+
     this->transportTime = 0.25f;
 }
 void ZProfileOp::MyEnd(){
@@ -27,8 +33,10 @@ void ZProfileOp::MyEnd(){
 
 void BendingOp::MyConstructor(){
     this->avgTime = 2;
-   // this->employees = 2;
-    //this->employesStartIndex = 2;
+    this->employe1 = employes[3];
+    this->employe1 = employes[4];
+    this->machine = machines[2];
+
     this->transportTime = 0.5f;
 }
 void BendingOp::MyEnd(){
@@ -38,8 +46,10 @@ void BendingOp::MyEnd(){
 
 void EnclosingOp::MyConstructor(){
     this->avgTime = 2;
-    //this->employees = 2;
-    //this->employesStartIndex = 4;
+    this->employe1 = employes[5];
+    this->employe1 = employes[6];
+    this->machine = machines[3];
+
     this->transportTime = 1.0f;
 }
 void EnclosingOp::MyEnd(){
@@ -49,8 +59,9 @@ void EnclosingOp::MyEnd(){
 
 void Cutting2Op::MyConstructor(){
     this->avgTime = 1;
-   // this->employees = 1;
-    //this->employesStartIndex = 5;
+    this->employe1 = employes[7];
+    this->machine = machines[4];
+
     this->transportTime = 0;
 }
 void Cutting2Op::MyEnd(){
@@ -60,8 +71,9 @@ void Cutting2Op::MyEnd(){
 
 void CompletionOp::MyConstructor(){
     this->avgTime = 3;
-    //this->employees = 1;
-    //this->employesStartIndex = 6;
+    this->employe1 = employes[8];
+    this->machine = machines[5];
+
     this->transportTime = 0;
 }
 void CompletionOp::MyEnd(){
@@ -71,8 +83,9 @@ void CompletionOp::MyEnd(){
 
 void PlantingOp::MyConstructor(){
     this->avgTime = 2;
-    //this->employees = 1;
-    //->employesStartIndex = 7;
+    this->employe1 = employes[9];
+    this->machine = machines[6];
+
     this->transportTime = 1;
 }
 void PlantingOp::MyEnd(){
@@ -82,8 +95,9 @@ void PlantingOp::MyEnd(){
 
 void QualityAsOp::MyConstructor(){
     this->avgTime = 1;
-    //this->employees = 1;
-    //this->employesStartIndex = 8;
+    this->employe1 = employes[10];
+    this->machine = machines[7];
+
     this->transportTime = 0.25f;
 }
 void QualityAsOp::MyEnd(){
@@ -93,8 +107,9 @@ void QualityAsOp::MyEnd(){
 
 void ExpeditionOp::MyConstructor(){
     this->avgTime = 30;
-   // this->employees = 1;
-   // this->employesStartIndex = 0;//TODO: 
+    this->employe1 = employes[11];
+    this->machine = machines[8];
+
     this->transportTime = 0.25f;
 }
 void ExpeditionOp::MyEnd(){
