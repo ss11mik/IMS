@@ -1,9 +1,7 @@
 #include "operations.hpp"
 #include <simlib.h>
 #include <queue>
-
-extern std::queue<int> itemsInProduction;
-extern Histogram dobaVProdukci;
+#include "stats.hpp"
 
 //cutting, zprofile, bending, enclosing, cutting2,completaion, planting, quality asurance, expedition
 

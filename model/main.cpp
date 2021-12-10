@@ -24,11 +24,8 @@ using namespace simlib3;
 
 int minTransports = 1;
 
-#include "stats.cpp"
+#include "stats.hpp"
 #include "operations.hpp"
-
-extern Facility machines[13];
-
 
 
 int main(int args, char* argv[]) {
