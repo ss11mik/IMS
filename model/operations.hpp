@@ -5,7 +5,7 @@
 #include <simlib.h>
 
 //cutting, zprofile, bending, enclosing, cutting2,completaion, planting, quality asurance, expedition
-class CuttingOp : public Operation{public: void MyConstructor();void MyEnd();};
+class CuttingOp : public Operation{public: void MyConstructor();void MyEnd();void MyStart();};
 class ZProfileOp : public Operation{public: void MyConstructor();void MyEnd();};
 class BendingOp : public Operation{public: void MyConstructor();void MyEnd();};
 class EnclosingOp : public Operation{public: void MyConstructor();void MyEnd();};

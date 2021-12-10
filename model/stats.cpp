@@ -13,7 +13,7 @@
 #include <simlib.h>
 
 
-Histogram dobaVProdukci("dobaVProdukci", 0, 1, 30);
+Histogram dobaVProdukci("dobaVProdukci", 0, 100, 30);
 
 std::queue<int> itemsInProduction;
 

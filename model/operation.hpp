@@ -11,6 +11,7 @@ public:
 
     virtual void MyConstructor()=0;
     virtual void MyEnd()=0;
+    virtual void MyStart(){};
     virtual bool CanTransport()
     {
         return true;
@@ -20,9 +21,10 @@ public:
 
         //seize stroj & cloveka
         Seize(*machine);
+        MyStart();
 
         //TODO exp or sth
-        auto time = abs(Normal(avgTime,sigma));
+        auto time = abs(Normal(avgTime, sigma));
         Wait(time);
 
         //release stroj
@@ -53,8 +55,8 @@ public:
         MyEnd();
     }
     protected:
-        float avgTime;
-        float sigma = 1;
+        double avgTime;
+        double sigma = .3;
         Facility* machine = NULL;
         float transportTime = 0;
 

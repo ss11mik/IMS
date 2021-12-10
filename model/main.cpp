@@ -41,13 +41,11 @@ int main(int args, char* argv[]) {
    // SetOutput("model.out");
     Init(0, SIM_TIME_SPAN);
     (new CuttingOp)->Activate();
-    (new CuttingOp)->Activate();
-    (new CuttingOp)->Activate();
   // (new mStat)->Activate();
 
     Run();
 
-    for (int i = 0; i < 13; i++) {
+    for (int i = 0; i < 9; i++) {
         machines[i].Output();
     }
     dobaVProdukci.Output();

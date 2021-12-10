@@ -7,7 +7,7 @@ extern Histogram dobaVProdukci;
 
 //cutting, zprofile, bending, enclosing, cutting2,completaion, planting, quality asurance, expedition
 
-Facility machines[13];
+Facility machines[9];
 
 void CuttingOp::MyConstructor(){
     this->avgTime = 4;
@@ -15,14 +15,17 @@ void CuttingOp::MyConstructor(){
 
     this->transportTime = 0.25f;
 }
-void CuttingOp::MyEnd(){
+void CuttingOp::MyStart(){
     itemsInProduction.push(Time);
+}
+void CuttingOp::MyEnd(){
      (new ZProfileOp)->Activate();
+     (new CuttingOp)->Activate();
 }
 
 
 void ZProfileOp::MyConstructor(){
-    this->avgTime = 1.5;
+    this->avgTime = 1.5f;
     this->machine = machines[1];
 
     this->transportTime = 0.25f;
@@ -99,7 +102,9 @@ void QualityAsOp::MyConstructor(){
     this->transportTime = 0.25f;
 }
 void QualityAsOp::MyEnd(){
-     (new ExpeditionOp)->Activate();
+    dobaVProdukci(Time - itemsInProduction.front());
+    itemsInProduction.pop();
+ //    (new ExpeditionOp)->Activate();
 }
 
 
@@ -107,11 +112,11 @@ void ExpeditionOp::MyConstructor(){
     this->avgTime = 30;
     this->machine = machines[8];
 
-    this->transportTime = 0.25f;
+    this->transportTime = 0;
 }
 void ExpeditionOp::MyEnd(){
     Print("pop\n");
-    dobaVProdukci(itemsInProduction.front());
+    dobaVProdukci(Time - itemsInProduction.front());
     itemsInProduction.pop();
     //TODO: void
 }
