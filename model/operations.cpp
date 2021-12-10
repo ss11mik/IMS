@@ -16,6 +16,8 @@
 Facility machines[9];
 int storages[9];
 
+extern int posliceksCount;
+
 extern int cuttingTrottlePercent;
 int cuttingCycle = 0;
 

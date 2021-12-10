@@ -28,8 +28,8 @@ bool usingOptimizedTransport = false;
 int posliceksCount = 0;
 
 #include "stats.hpp"
-//#include "poslicek.hpp"
 #include "operations.hpp"
+#include "poslicek.hpp"
 
 
 int main(int args, char* argv[]) {
@@ -40,8 +40,8 @@ int main(int args, char* argv[]) {
     Init(0, SIM_TIME_SPAN);
     (new CuttingOp)->Activate();
 
-//    for (int i = 0; i < posliceksCount; i++)
-//        (new Poslicek)->Activate();
+    for (int i = 0; i < posliceksCount; i++)
+        (new Poslicek)->Activate();
 
     Run();
 

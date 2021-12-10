@@ -45,10 +45,7 @@ public:
         {
             Release(*machine);
 
-
-            //seize the transport worker
-            Wait(transportTime);
-            //TODO
+            //a separate proccess will take care of it
         }
         else {
 
