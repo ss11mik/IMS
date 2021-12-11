@@ -12,7 +12,7 @@
 #include "operation.hpp"
 #include <simlib.h>
 
-extern Facility machines[9];
+extern Store machines[9];
 extern int storage[9];
 
 //cutting, zprofile, bending, enclosing, cutting2,completaion, planting, quality asurance, expedition

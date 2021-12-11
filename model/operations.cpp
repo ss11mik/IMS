@@ -13,38 +13,39 @@
 
 //cutting, zprofile, bending, enclosing, cutting2,completaion, planting, quality asurance, expedition
 
-Facility machines[9];
-int storages[9];
+Store machines[9];
+int storages[9] = {0,0,0,0,0,0,0,0,0};
 
 extern int posliceksCount;
 
 extern int cuttingTrottlePercent;
 int cuttingCycle = 0;
-
+int zprofilesGened = 0;
+int cutsGenerated = 0;
 extern bool usingOptimizedTransport;
 
 void CuttingOp::MyConstructor(){
     this->avgTime = 4;
     this->machine = machines[0];
+    
     this->currentStorage = &storages[0];
     this->transportTime = (usingOptimizedTransport)? 0.2f : 0.25f;
+    
 
 }
 void CuttingOp::MyStart(){
     itemsInProduction.push(Time);
-    if (cuttingCycle < cuttingTrottlePercent)
-        itemsInProduction.push(Time);
-    cuttingCycle = (cuttingCycle+1)%100;
+    //cutsGenerated++;
     (new CuttingOp)->Activate();
 }
 void CuttingOp::MyEnd(){
+    zprofilesGened++;
      (new ZProfileOp)->Activate();
-     if (cuttingCycle < cuttingTrottlePercent)
-        (new ZProfileOp)->Activate();
 }
 
 
 void ZProfileOp::MyConstructor(){
+    
     this->avgTime = 1.5f;
     this->machine = machines[1];
     this->currentStorage = &storages[1];

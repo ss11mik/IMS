@@ -31,7 +31,8 @@ public:
         MyConstructor();
 
         //seize stroj & cloveka
-        Seize(*machine);
+        machine->Enter(this, 1);
+        // Seize(*machine);
         MyStart();
 
         //TODO exp or sth
@@ -43,28 +44,26 @@ public:
         //release stroj
         if(posliceksCount > 0)
         {
-            Release(*machine);
-
-            //a separate proccess will take care of it
+            machine->Leave(1);
+            //seize the transport worker
         }
-        else {
-
-            if (minTransportCount == *currentStorage) {
+        else
+        {
+        
+            if (minTransportCount <= (*currentStorage)) {
                 //transport
                 if(transportTime != 0)
                 {
                     Wait(transportTime);//todo: delta
                 }
 
-                for(int i = 0; i <minTransportCount; i++)
+                for(int i = 0; i <(*currentStorage); i++)
                 {
                     MyEnd();
                 }
                 *currentStorage = 0;
-
             }
-
-            Release(*machine);
+            machine->Leave(1);
         }
 
     }
@@ -72,7 +71,7 @@ public:
     protected:
         double avgTime;
         double sigma = .3;
-        Facility* machine = NULL;
+        Store* machine = NULL;
         float transportTime = 0;
 
         int minTransportCount = 1;
