@@ -25,7 +25,9 @@ using namespace simlib3;
 int minTransports = 1;
 int cuttingTrottlePercent = 0;
 bool usingOptimizedTransport = false;
-int posliceksCount = 2;
+int posliceksCount = 0;
+
+int capacities[] = {1, 1, 1, 1, 1, 1, 1, 1};
 
 #include "stats.hpp"
 #include "operations.hpp"
@@ -39,24 +41,18 @@ int main(int args, char* argv[]) {
 
     for(int i = 0;i<9;i++)
     {
-        machines[i].SetCapacity(1);
+        machines[i].SetCapacity(capacities[i]);
     }
 
-    //cutting has two machines
-  //  machines[0].SetCapacity(2);
-    machines[0].SetName("CUtting");
-    //machines[1].SetCapacity(2);
+    machines[0].SetName("Cutting");
     machines[1].SetName("ZProfile");
-    //machines[2].SetCapacity(2);
     machines[2].SetName("Bending");
-    //machines[3].SetCapacity(2);
     machines[3].SetName("Enclosing");
     machines[4].SetName("Cutting2Op");
     machines[5].SetName("CompletionOp");
     machines[6].SetName("PlantingOp");    
     machines[7].SetName("QualityAsOp");
 
-   // machines[4].SetCapacity(2);
 
     Print("Zacatek simulace\n");
 
