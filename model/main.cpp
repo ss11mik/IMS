@@ -12,34 +12,38 @@
 
 #include <simlib.h>
 
-// the time span of simulation
-// 60 * 8 * 7 minutes * 100 = 100 weeks
-#define SIM_TIME_SPAN 33600
-
 // number of actual employees available in company
 #define EMPLOYEES 13
+#define MACHINES_COUNT 9
 
 //using namespace std;
 using namespace simlib3;
 
+//======== editablke simulation parameters ========
 int minTransports = 1;
 int cuttingTrottlePercent = 0;
 bool usingOptimizedTransport = false;
 int posliceksCount = 0;
 
+// the time span of simulation
+// 60 * 8 * 7 minutes * 100 = 100 weeks
+#define SIM_TIME_SPAN 33600
+
 int capacities[] = {1, 1, 1, 1, 1, 1, 1, 1};
+//======== editablke simulation parameters ========
+
 
 #include "stats.hpp"
 #include "operations.hpp"
 #include "poslicek.hpp"
 
-extern Store machines[9];
+extern Store machines[MACHINES_COUNT];
 extern int zprofilesGened;
 extern int cutsGenerated;
 
 int main(int args, char* argv[]) {
 
-    for(int i = 0;i<9;i++)
+    for(int i = 0; i < MACHINES_COUNT; i++)
     {
         machines[i].SetCapacity(capacities[i]);
     }
@@ -65,12 +69,14 @@ int main(int args, char* argv[]) {
 
     Run();
 
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < MACHINES_COUNT; i++) {
         machines[i].Output();
     }
     dobaVProdukci.Output();
+
+    Print("zprofiles %d\n",zprofilesGened);
+    Print("cuts %d\n",cutsGenerated);
+
     Print("Konec simulace\n");
-Print("zprofiles %d\n",zprofilesGened);
-Print("cuts %d\n",cutsGenerated);
     return 0;
 }
