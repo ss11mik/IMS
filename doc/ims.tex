@@ -42,20 +42,62 @@
 
 \section{Úvod}
 
+\subsection{Význačné zdroje}
+
+\subsection{Prostředí}
+
 \section{Simulace}
 Simlib
 10 týdnů
 čas v minutách
 
 \section{Experimenty}
+Obecným cílem experimentů bylo naýšení produkce, a tím i zisku, simulované firmy.
 
-\subsection{Úzká místa}
+\subsection{Postup experimentování}
+Nejdříve byly identifikovány potenciální cesty pro zvýšení produktivity. Každé takové cestě odpovídá jeden proběhlý experiment. Některé byly převzaty z neověřených tezí v literatuře, další se zaměřily na identifikaci problémů či zapojení nových metod do postupu výroby.
 
-\subsection{Navrhovaná úprava rozmístění}
+V průběhu experimentu byly použity metody půlení intervalu a záměrného naddimenzování některých hodnot.
 
-\subsection{Dávkové předávání}
+\subsection{Jednotlivé experimenty}
 
-\subsection{Vyhrazený zaměstnanec pro přenos mezi pracovišti}
+%\subsubsection{Úzká místa}
+
+\subsubsection{Úzká místa}
+Úvodním experimentem byla identifikována úzká místa ve výrobě - tedy stanoviště, která brzdí výrobu a na která musí následující stanoviště čekat. Hlavními ukazateli byly vytíženost stanoviště, tedy kolik procent času bylo využito, a velikost fronty, která se před ním tvořila.
+
+Ve stavu odpovídajícím realitě je nejvíce vytíženo 1. pracoviště (stříhání plechu), díky čemuž další stíhají a nikde nevznikají fronty. Prvním logickým krokem tedy bylo navýšit produkitivitu tohoto stanoviště.
+
+Jednoduchá simulace zdvojení tohoto stanoviště (tedy zakoupení 2. stejného stroje a přijmutí dalšího zaměstnance, či práce na jednom stroji na 2 směny) ukázala, že před stanicí pro kompletaci (3.) a osazování (4.) by se začaly tvořit fronty (které s postupem času jen narůstají).
+
+Metodou půlení intervalu bylo následně zjištěno, že při zachování plynulosti celé výroby lze efektivitu stříhání plechu navýšit až o 41 \% (při vyšších hodnotách se již začnou tvořit stále se zvyšující fronty). Tím se celková produkce navýší o odpovídajících 41 \%.
+
+
+\subsubsection{Navrhovaná úprava rozmístění}
+V tomto experimentu bylo simulováno nové rozmístění jednotlivých stanic podle návrhu v TODO. To bylo provedeno přenastavením časů pro transport mezi stanicemi dle zdroje. Následná simulace tohoto experimentu potvrdila zrychlení výroby jednoho kusu z 20 minut na 18.85 minut.
+
+
+\subsubsection{Dávkové předávání}
+Cílem tohoto experimentu bylo zvýšit produkci tím, že polotovary budou přenášeny mezi stanicemi až po nahromadění určitého počtu kusů (v součastnosti se přenáší po jednom). Experiment byl spuštěn několikrát s různými počty kusů, po kterých jsou přenášeny. Každé pracoviště má vlastní překladiště, předání se tedy provede po jeho zaplnění, nezávisle na ostatních částech linky.
+
+Předpoklad, že průměrná doba pro vyrobení jednoho kusu se zvětší, se potvrdil.
+
+
+\subsubsection{Vyhrazený zaměstnanec pro přenos mezi pracovišti}
+Tento experiment simuluje přijetí nového zaměstnance, jehož pracovní náplní by bylo pouze přenášet polotovary mezi jednotlivými stanovišti.
+
+Simulace chodu výroby s jedním takovým zaměstnancem ukázala, že produkce firmy by se zvýšila asi o 6 \%. Nový zaměstananec by tvořil 1/13, tedy cca 8 \%, zaměstanců, ovšem potřeboval by prakticky nulovou kvalifikaci a tedy nižší plat, jeho zařazení by tudíž mohlo být pro firmu výhodné.
+
+Vedlejším efektem zařazení pomocného pracovníka bylo zvýšení průměrné doby výroby jednoho produktu, a to o více než dvojnásobek. Tato veličina ovšem ovlivňuje pouze dobu náběhu ze zastavení do plné produkce.
+
+%mnohem méně důležitá, než počet vyprodukovaných výrobků za dobu simulace.
+
+V experimentu s více zaměstnanci pro přenášení se již produkce téměř nezvýšila, pouze se zanedbatelně snížil průměrný čas výroby jednoho produktu, stále však nedosáhl na hodnotu bez přenašečů.
+
+\subsubsection{Kombinované experimenty}
+
+\subsection{Závěry experimentů}
+Z provedených experimentů vyplývá, že
 
 
 \section{Závěr}

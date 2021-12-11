@@ -25,7 +25,7 @@ using namespace simlib3;
 int minTransports = 1;
 int cuttingTrottlePercent = 0;
 bool usingOptimizedTransport = false;
-int posliceksCount = 0;
+int posliceksCount = 2;
 
 #include "stats.hpp"
 #include "operations.hpp"
@@ -43,7 +43,7 @@ int main(int args, char* argv[]) {
     }
 
     //cutting has two machines
-    machines[0].SetCapacity(2);
+  //  machines[0].SetCapacity(2);
     machines[0].SetName("CUtting");
     //machines[1].SetCapacity(2);
     machines[1].SetName("ZProfile");
