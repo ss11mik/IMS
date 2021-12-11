@@ -41,6 +41,40 @@
 
 
 \section{Úvod}
+V této práci je popsán simulační model výroby hranatého potrubí ve společnosti KLMN spol s.r.o. Na základě modelu a simulačních experimentů budou ukázána slabá místa výroby. Smyslem práce je pak zjistit, zda-li je možné tyto slabá místa vylepšit nebo úplně odstranit. 
+\subsection{Autoři a zdroje informací}
+Autory projektu jsou David Podeszwa a Ondřej Mikula. 
+
+
+Informace byly čerpány z bakalářské práce \href{http://digilib.k.utb.cz/bitstream/handle/10563/22155/%20ih%C3%A1k_2012_bp.pdf?sequence=1}{Analýza současného výrobního procesu ve 
+vybrané firmě}. TODO:%%TODO: Bibtext citace zdroje
+\subsection{Ověření validity}
+Veškeré informace o výrobě byly čerpány z uvedené bakalářské práce, jejíž autor čerpal informace přímo od dané firmy, a tudíž by měly být přesné. Prvotní experiment na výchozím modelu pak ověřil, že průměrná doba výroby produktu trvá tak dlouho jak uvádí zdroj.
+\section{Rozbor tématu a použitých metod/technologií}
+Tématem práce je simulace výroby hranatého potrubí. Samotný proces výroby je rozdělen do více částí. Materiálem použitý k výrobě je pouze jeden a to pozinkovaný plech. Výrobu zahajuje stříhač, ktery na stroji nastříhá tento plech dle rozměrů.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|}
+     \hline  & \textbf{Operace} &  \textbf{Čas (min)}\\ \hline
+    1. &                Stříhání plechu   &  4\\ 
+    2. &\hspace{0.1cm}  Transport   &  0,25\\ \hline
+    3. &                Válcování    &  4\\ 
+    4. &\hspace{0.1cm}  Transport   &  0,25\\ \hline
+    5. &                Ohýbání plechu    &  4\\ 
+    6. &\hspace{0.1cm}  Transport   &  0,25\\ \hline
+    7. &                Uzavírání profilu    &  4\\ 
+    8. &\hspace{0.1cm}  Transport   &  0,25\\ \hline
+    9. &                Řezání přírubových profilů    &  4\\ \hline
+    10. &               Kompletace spojovacích přírub    &  4\\ \hline
+    12. &                Osazení přírubami    &  4\\ 
+    13. &\hspace{0.1cm}  Transport   &  0,25\\ \hline
+    
+    \end{tabular}
+    \caption{Kapce}
+    \label{rgrg}
+\end{table}
+
+Po posledním kroku je trubka odnesena na sklad kde čeká na expedici následující den, ale to už není součástí modelu, neboť ten se zabývá jen samotnou výrobou.
 
 \subsection{Význačné zdroje}
 
