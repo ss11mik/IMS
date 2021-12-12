@@ -13,15 +13,15 @@ all: code documentation clean zip
 
 clean:
 	rm $(ZIPFILE) || true
-	cd model && make clean
-	cd doc && make clean
+	cd model && make clean || true
+	cd doc && make clean || true
 
 
 code:
-	cd model && make clean && make
+	cd model && make
 
 documentation:
-	cd doc && make clean && make
+	cd doc && make
 
 zip:
 	zip -r $(ZIPFILE) doc/ims.pdf doc/ model/

@@ -14,5 +14,5 @@ all:
 	pdflatex ims.tex
 
 clean:
-	rm *.log *.out *.aux *.toc
+	rm *.log *.out *.aux *.toc *.dvi *.blg *.bbl
 	rm *.pdf
