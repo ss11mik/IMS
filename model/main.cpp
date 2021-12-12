@@ -58,14 +58,14 @@ int experiment = 0;
 
 
 void mRun () {
-
+Init(0, SIM_TIME_SPAN);
     for(int i = 0; i < MACHINES_COUNT; i++)
     {
         machines[i].Clear();
         machines[i].SetCapacity(capacities[i]);
     }
 
-    Init(0, SIM_TIME_SPAN);
+    
 
     (new CuttingOp)->Activate();
 
