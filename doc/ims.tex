@@ -4,8 +4,9 @@
 \usepackage[czech]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{cite}
 
-
+\usepackage[hyphens]{url}
 \usepackage[hidelinks, unicode]{hyperref}
 \usepackage[left=2cm,text={17cm, 24cm},top=3cm]{geometry}
 \usepackage{graphicx}
@@ -49,7 +50,7 @@ Autory projektu jsou David Podeszwa a Ondřej Mikula.
 
 
 Informace byly čerpány z bakalářské práce \href{http://digilib.k.utb.cz/bitstream/handle/10563/22155/%20ih%C3%A1k_2012_bp.pdf?sequence=1}{Analýza současného výrobního procesu ve
-vybrané firmě}. TODO:%%TODO: Bibtext citace zdroje
+vybrané firmě}\cite{bp}.
 \subsection{Ověření validity}
 Konkrétní informace o výrobě byly čerpány z uvedené bakalářské práce, jejíž autor získal informace přímo od dané firmy, a tudíž by měly být přesné. Prvotní experiment na výchozím modelu ověřil, že průměrná doba výroby produktu se shoduje s dobou uvedenou ve zdroji.
 
@@ -86,7 +87,7 @@ Po posledním kroku je trubka odnesena do skladu, kde čeká na expedici násled
 Práce probíhá v jedné, osmihodinové, směně. Firma KLMN s r.o. zaměstnává 13 pracovníků ve výrobě, a to na plný úvazek.
 
 \subsection{Použité postupy}
-Pro vytvoření simulačního modelu byl použit jazyk C++ a jeho standardní knihovny společně s knihovnou SIMLIB [TODO: citace, odkaz]. Ta obsahuje veškeré nástroje potřebné pro vytvoření simulačního modelu systému hromadné obsluhy [TODO: citace z prezentace].
+Pro vytvoření simulačního modelu byl použit jazyk C++ a jeho standardní knihovny společně s knihovnou SIMLIB\cite{simlib}. Ta obsahuje veškeré nástroje potřebné pro vytvoření simulačního modelu systému hromadné obsluhy\cite{ims}.
 \subsection{Původ použitých postupů}
 \begin{itemize}
     \item Pro implementaci byl použit programovací jazyk C++ konkrétně kompilováno se standardem C++17. - \href{https://en.cppreference.com/w/cpp}{\texttt{https://en.cppreference.com/w/cpp}}
@@ -179,6 +180,7 @@ Bylo provedeno TODO experimentů, z nichž lze odvodit efektivitu a výhodnost p
 \section{Shrnutí simulačních experimentů a závěr}
 Z provedených experimentů vyplývá, že
 
-
+\bibliographystyle{czechiso}
+\bibliography{ims}
 
 \end{document}

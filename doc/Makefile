@@ -9,6 +9,8 @@
 
 all:
 	pdflatex ims.tex
+	bibtex ims
+	pdflatex ims.tex
 	pdflatex ims.tex
 
 clean:
