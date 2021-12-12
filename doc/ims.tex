@@ -45,10 +45,10 @@ V této práci je popsán simulační model výroby hranatého potrubí ve spole
 %zjistit, zda je možné tato slabá místa vylepšit či odstranit a navrhnout další vylepšení výrobního procesu a
 experimenty potvrdit či vyvrátit jejich účinnost.
 \subsection{Autoři a zdroje informací}
-Autory projektu jsou David Podeszwa a Ondřej Mikula. 
+Autory projektu jsou David Podeszwa a Ondřej Mikula.
 
 
-Informace byly čerpány z bakalářské práce \href{http://digilib.k.utb.cz/bitstream/handle/10563/22155/%20ih%C3%A1k_2012_bp.pdf?sequence=1}{Analýza současného výrobního procesu ve 
+Informace byly čerpány z bakalářské práce \href{http://digilib.k.utb.cz/bitstream/handle/10563/22155/%20ih%C3%A1k_2012_bp.pdf?sequence=1}{Analýza současného výrobního procesu ve
 vybrané firmě}. TODO:%%TODO: Bibtext citace zdroje
 \subsection{Ověření validity}
 Konkrétní informace o výrobě byly čerpány z uvedené bakalářské práce, jejíž autor získal informace přímo od dané firmy, a tudíž by měly být přesné. Prvotní experiment na výchozím modelu ověřil, že průměrná doba výroby produktu se shoduje s dobou uvedenou ve zdroji.
@@ -73,7 +73,7 @@ Celý proces začíná naskladněním materiálu při vykládce z dodávky. Ze s
     8. &                Kontrola kvality    & 1  &  N/A\\
     \hline
 
-    
+
     \end{tabular}
     \caption{Výrobní postup}
     \label{rgrg}
@@ -86,11 +86,11 @@ Po posledním kroku je trubka odnesena do skladu, kde čeká na expedici násled
 Práce probíhá v jedné, osmihodinové, směně. Firma KLMN s r.o. zaměstnává 13 pracovníků ve výrobě, a to na plný úvazek.
 
 \subsection{Použité postupy}
-Pro vytvoření simulačního modelu byl použit jazyk C++ a jeho standardní knihovny společně s knihovnou SIMLIB [TODO: citace, odkaz]. Ta obsahuje veškeré nástroje potřebné pro vytvoření simulačního modelu systému hromadné obsluhy [TODO: citace z prezentace]. 
+Pro vytvoření simulačního modelu byl použit jazyk C++ a jeho standardní knihovny společně s knihovnou SIMLIB [TODO: citace, odkaz]. Ta obsahuje veškeré nástroje potřebné pro vytvoření simulačního modelu systému hromadné obsluhy [TODO: citace z prezentace].
 \subsection{Původ použitých postupů}
 \begin{itemize}
     \item Pro implementaci byl použit programovací jazyk C++ konkrétně kompilováno se standardem C++17. - \href{https://en.cppreference.com/w/cpp}{\texttt{https://en.cppreference.com/w/cpp}}
-    \item Knihovna SIMLIB -  \href{http://www.fit.vutbr.cz/~peringer/SIMLIB/}{\texttt{http://www.fit.vutbr.cz/~peringer/SIMLIB/}}
+    \item Knihovna SIMLIB -  \href{http://www.fit.vutbr.cz/~peringer/SIMLIB/}{\texttt{http://www.fit.vutbr.cz/$\sim$peringer/SIMLIB/}}
     \item Nástroj GNU make. Použit k automatizaci kompilace -  \href{https://www.gnu.org/software/make/}{\texttt{https://www.gnu.org/software/make/}}
 \end{itemize}
 
@@ -98,24 +98,24 @@ Pro vytvoření simulačního modelu byl použit jazyk C++ a jeho standardní kn
 
 Simulační model vychází z popisu výroby v předešlé kapitole. Některé údaje nebyly do simulačního modelu zahrnuty, jelikož neovlivňují sledované výstupy simulace:
 \begin{itemize}
-    \item v símulačním modelu je práce nepřetržitá. Není tedy modelováno zbylých 16 hodin dne, kdy se nic neděje.
+    \item v simulačním modelu je práce nepřetržitá. Není tedy modelováno zbylých 16 hodin dne, kdy se nic neděje.
     \item koncept zaměstnanců je vynechán. Předpokládá se, že každé stanoviště má své stálé pracovníky. Výjimku tovří experiment s novým zaměstnancem, který přenáší polotovary mezi jednotlivými stanovišti.
     \item vstupní materiál. Model předpokládá, že plechu je ve skladě vždy dostatek, jelikož se tato simulace zaobírá zefektivněním práce, ne krizovými případy a výpadky.
     \item expedice. Ze stejného důvodu jako výše, je z modelu vynechána expedice hotových výrobků ze skladu.
 \end{itemize}
 
-Simulační model pracuje tak, že na 1. stupni výroby se \uv{vytváří} (generují) polotovary, které jsou předávány dále přes celý proces. Každé pracoviště může v daném okamžiku zpracovávat nejvýše jeden polotovar, pokud nestíhá, tvoří se před ním fronta polotovarů. Pracoviště mají určeny své vlastnosti, jako jméno, čas na zpracování jednoho polotovaru a čas přenosu na další pracoviště.
+Simulační model pracuje tak, že na 1. stupni výroby se vytváří (generují) polotovary, které jsou předávány dále přes celý proces. Každé pracoviště může v daném okamžiku zpracovávat nejvýše jeden polotovar, pokud nestíhá, tvoří se před ním fronta polotovarů. Pracoviště mají určeny své vlastnosti, jako jméno, čas na zpracování jednoho polotovaru a čas přenosu na další pracoviště.
 
-Spuštěním modelu lze vyzískat primárně dvě statistiky: počet vyprodukovaných výrobků a průměrnmou dobu vyrábění jednoho výrobku. Podrobněji lze sledovat procentuální vytíženost jednotlivých pracovišť a případné fronty tvořící se před nimu.
+Spuštěním modelu lze vyzískat primárně dvě statistiky: počet vyprodukovaných výrobků a průměrnmou dobu vyrábění jednoho výrobku. Podrobněji lze sledovat procentuální vytíženost jednotlivých pracovišť a případné fronty tvořící se před nimi.
 
 Simulace je většinou spouštěna na dobu 10 týdnů, během kterých se zahladí počáteční zpoždění, způsobené náběhem celé výrobní linky (na počátku simulace pracuje jen 1. pracoviště, ostatní čekají, až se k nim dostanou polotovary, které mohou zpracovávat).
 
 
 \section{Architektura simulačního modelu/simulátoru}
+
+
 \subsection{Namapování veličin}
-Simlib
-10 týdnů
-čas v minutách
+
 
 \section{Podstata simulačních experimentů a jejich průběh}
 Obecným cílem experimentů bylo naýšení produkce, a tím i zisku, simulované firmy.
