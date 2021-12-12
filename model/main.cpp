@@ -85,6 +85,7 @@ void mRun () {
 }
 
 void setup_experiments() {
+    SetOutput("model.out");
     switch (experiment) {
         case 0:
         case 1:
@@ -120,17 +121,20 @@ void setup_experiments() {
             break;
         case 5:
             //Dávkové předávání
-
             minTransports = 1;
+            SetOutput("batchModel1.out");
             mRun();
 
             minTransports = 2;
+            SetOutput("batchModel2.out");
             mRun();
 
             minTransports = 5;
+            SetOutput("batchModel5.out");
             mRun();
 
             minTransports = 10;
+            SetOutput("batchModel10.out");
             mRun();
             break;
         case 6:
@@ -170,7 +174,7 @@ int main(int argc, char* argv[]) {
 
     Print("Zacatek simulace\n");
 
-   // SetOutput("model.out");
+
     setup_experiments();
 
 
