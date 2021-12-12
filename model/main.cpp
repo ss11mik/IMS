@@ -39,9 +39,9 @@ bool usingOptimizedTransport = false;
 int posliceksCount = 0;
 
 
-//int capacities[] = {1, 1, 1, 1, 1, 1, 1, 1};
-// helf production on Cutting2Op and QualityAsOp
-int capacities[] = {2, 2, 2, 2, 1, 2, 2, 1};
+int capacities[] = {1, 1, 1, 1, 1, 1, 1, 1};
+// half production on Cutting2Op and QualityAsOp
+//int capacities[] = {2, 2, 2, 2, 1, 2, 2, 1};
 
 //======== editablke simulation parameters ========
 
@@ -54,27 +54,19 @@ extern Store machines[MACHINES_COUNT];
 extern int zprofilesGened;
 extern int cutsGenerated;
 
-int main(int args, char* argv[]) {
+int experiment = 0;
+
+
+void mRun () {
 
     for(int i = 0; i < MACHINES_COUNT; i++)
     {
+        machines[i].Clear();
         machines[i].SetCapacity(capacities[i]);
     }
 
-    machines[0].SetName("Cutting");
-    machines[1].SetName("ZProfile");
-    machines[2].SetName("Bending");
-    machines[3].SetName("Enclosing");
-    machines[4].SetName("Cutting2Op");
-    machines[5].SetName("CompletionOp");
-    machines[6].SetName("PlantingOp");    
-    machines[7].SetName("QualityAsOp");
-
-
-    Print("Zacatek simulace\n");
-
-   // SetOutput("model.out");
     Init(0, SIM_TIME_SPAN);
+
     (new CuttingOp)->Activate();
 
     for (int i = 0; i < posliceksCount; i++)
@@ -86,9 +78,101 @@ int main(int args, char* argv[]) {
         machines[i].Output();
     }
     dobaVProdukci.Output();
+    dobaVProdukci.Clear();
 
     Print("zprofiles %d\n",zprofilesGened);
     Print("cuts %d\n",cutsGenerated);
+}
+
+void setup_experiments() {
+    switch (experiment) {
+        case 0:
+        case 1:
+            //defasult
+
+            mRun();
+            break;
+        case 2:
+            //Úzká místa
+            capacities[0] = 2;
+
+            mRun();
+            break;
+        case 3:
+            //Nevyužitá práce
+            //int capacities[] = {2, 2, 2, 2, 1, 2, 2, 1};
+            capacities[0] = 2;
+            capacities[1] = 2;
+            capacities[2] = 2;
+            capacities[3] = 2;
+            capacities[4] = 1;
+            capacities[5] = 2;
+            capacities[6] = 2;
+            capacities[7] = 1;
+
+            mRun();
+            break;
+        case 4:
+            //Navrhovaná úprava rozmístění
+
+            usingOptimizedTransport = true;
+            mRun();
+            break;
+        case 5:
+            //Dávkové předávání
+
+            minTransports = 1;
+            mRun();
+
+            minTransports = 2;
+            mRun();
+
+            minTransports = 5;
+            mRun();
+
+            minTransports = 10;
+            mRun();
+            break;
+        case 6:
+            //Vyhrazený zaměstnanec pro přenos mezi pracovišti
+
+            posliceksCount = 0;
+            mRun();
+
+            posliceksCount = 1;
+            mRun();
+
+            posliceksCount = 2;
+            mRun();
+
+            posliceksCount = 5;
+            mRun();
+            break;
+
+    }
+}
+
+int main(int argc, char* argv[]) {
+
+    if (argc > 1)
+        experiment = atoi(argv[1]);
+
+    machines[0].SetName("Cutting");
+    machines[1].SetName("ZProfile");
+    machines[2].SetName("Bending");
+    machines[3].SetName("Enclosing");
+    machines[4].SetName("Cutting2Op");
+    machines[5].SetName("CompletionOp");
+    machines[6].SetName("PlantingOp");
+    machines[7].SetName("QualityAsOp");
+
+
+
+    Print("Zacatek simulace\n");
+
+   // SetOutput("model.out");
+    setup_experiments();
+
 
     Print("Konec simulace\n");
     return 0;
