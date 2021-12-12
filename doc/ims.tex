@@ -125,9 +125,59 @@ Simulace je většinou spouštěna na dobu\cite[str. 21]{ims} 10 týdnů, během
 \end{figure}
 
 \section{Architektura simulačního modelu/simulátoru}
+Před počátkem simulace se inicializují kapacity jednotlivých zařízení. Při spuštění simulačního modelu je spuštěn vybraný experiment na základě parametrů příkazové řádky. 
+
+Vždy je simulováno 10 týdnů provozu a jedna jednotka modelového času značí jednu minutu reálného času. Na konci experimentu jsou vypsány informace o všech skladech[TODO: citace do prezentace na Store] pracovních míst, a také histogram celkového času zpracování výrobku.
+
+Při zahájení experimentu je vytvořen a aktivován proces reprezentující operaci stříhání. [TODO: reference do prezentace]
+\newpage
+\subsection{Namapování modelu}
+Pro všechny procesy byla vytvořena třída pro generický proces \verb|Operation|, u nějž je možné měnit parametry tak, aby doba výroby a doba transportu vždy odpovídala jednotlivým operacím. Třída pak poskytuje jejím potomkům možnost implementovat metody pro inicializaci,počátek a konec operace. Z této třídy pak dědí veškeré další třídy už reprezentující tyto jednotlivé operace. 
+
+Algoritmus průběhu generické operace:
+\begin{algorithm}[ht]
+		\SetKw{Break}{break}
+        Zavolání vlastního inicializátoru(MyConstructor)\;
+        Čekání a poté zabrání  volné pracoviště;\;
+        Zavolání metody počátku potomka(MyStart)\;
+        Čekání na dokončení práce\;
+        Přičtení položek na odkladové místo pracoviště\;
+		
+		\eIf{Počet položek na odkladovém místě >= minimální počet nutný k transportu}
+		{
+			Čekání na dokončení transportu\;
+			\For{pro počet položek na odkladišti}
+			{
+			    Zavolání ukončení operace (MyEnd)\;
+			}
+			Nastavení počtu položek na odkladišti na 0\;
+		}{}
+		Opuštění pracoviště\;
+	
+
+		\caption{Generický proces operace}
+		\label{algorithm:workshift}
+	\end{algorithm}
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|}
+     \hline \textbf{operace} &  \textbf{třída}\\ \hline
+Stříhání plechu   & CuttingOp\\ \hline
+Z-profil    &  ZProfileOp\\ \hline
+Ohýbání plechu    & BendingOp\\ \hline
+Uzavírání profilu    & EnclosingOp\\  \hline
+Řezání přírubových profilů    & Cutting2Op\\ \hline
+Kompletace spojovacích přírub& CompletionOp\\ \hline
+Osazení přírubami    & PlantingOp \\
+    \hline
+Kontrola kvality    &QualityAsOp \\
+    \hline
 
 
-\subsection{Namapování veličin}
+    \end{tabular}
+    \caption{Mapování operací na třídy}
+    \label{rgrg}
+\end{table}
 
 
 \section{Podstata simulačních experimentů a jejich průběh}
