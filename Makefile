@@ -7,18 +7,21 @@
 #
 
 
-ZIPFILE=ims.zip
+ZIPFILE=10_xpodes05_xmikul69.zip
 
-all: clean code documentation zip
+all: code documentation clean zip
 
 clean:
 	rm $(ZIPFILE) || true
+	cd model && make clean
+	cd doc && make clean
+
 
 code:
-	cd model && make
+	cd model && make clean && make
 
 documentation:
-	cd doc && make
+	cd doc && make clean && make
 
 zip:
-	zip -r $(ZIPFILE) doc/ims.pdf doc/
+	zip -r $(ZIPFILE) doc/ims.pdf doc/ model/
