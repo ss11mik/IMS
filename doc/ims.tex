@@ -5,6 +5,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{cite}
+\usepackage[czech, boxed]{algorithm2e}
 
 \usepackage[hyphens]{url}
 \usepackage[hidelinks, unicode]{hyperref}
@@ -125,21 +126,21 @@ Simulace je většinou spouštěna na dobu\cite[str. 21]{ims} 10 týdnů, během
 \end{figure}
 
 \section{Architektura simulačního modelu/simulátoru}
-Před počátkem simulace se inicializují kapacity jednotlivých zařízení. Při spuštění simulačního modelu je spuštěn vybraný experiment na základě parametrů příkazové řádky. 
+Před počátkem simulace se inicializují kapacity jednotlivých zařízení. Při spuštění simulačního modelu je spuštěn vybraný experiment na základě parametrů příkazové řádky (bez zadaného parametru se spustí simulace výchozího modelu).
 
-Vždy je simulováno 10 týdnů provozu a jedna jednotka modelového času značí jednu minutu reálného času. Na konci experimentu jsou vypsány informace o všech skladech[TODO: citace do prezentace na Store] pracovních míst, a také histogram celkového času zpracování výrobku.
+Vždy je simulováno 10 týdnů (pracovních hodin, ne čistého času, tedy 8 hodin * 7 dní * 10 týdnů) provozu a jedna jednotka modelového času značí jednu minutu reálného času. Na konci experimentu jsou vypsány informace o všech skladech\cite[str. 184]{ims} pracovních míst, a také histogram\cite[str. 81]{ims} celkového času zpracování výrobku.
 
-Při zahájení experimentu je vytvořen a aktivován proces reprezentující operaci stříhání. [TODO: reference do prezentace]
+Při zahájení experimentu je vytvořen a aktivován proces\cite[str. 171]{ims} reprezentující operaci stříhání\cite[str. 46]{bp} a případně procesy zaměstanců - přenašečů.
 \newpage
 \subsection{Namapování modelu}
-Pro všechny procesy byla vytvořena třída pro generický proces \verb|Operation|, u nějž je možné měnit parametry tak, aby doba výroby a doba transportu vždy odpovídala jednotlivým operacím. Třída pak poskytuje jejím potomkům možnost implementovat metody pro inicializaci,počátek a konec operace. Z této třídy pak dědí veškeré další třídy už reprezentující tyto jednotlivé operace. 
+Pro všechna pracoviště byla vytvořena třída pro generický proces \verb|Operation|, u nějž je možné měnit parametry tak, aby doba výroby a doba transportu vždy odpovídala jednotlivým operacím. Třída poskytuje jejím potomkům možnost implementovat metody pro inicializaci, počátek a konec operace. Z této třídy dědí veškeré další třídy reprezentující již jednotlivé operace (pracoviště).
 
 Algoritmus průběhu generické operace:
 \begin{algorithm}[ht]
 		\SetKw{Break}{break}
-        Zavolání vlastního inicializátoru(MyConstructor)\;
-        Čekání a poté zabrání  volné pracoviště;\;
-        Zavolání metody počátku potomka(MyStart)\;
+        Zavolání vlastního inicializátoru(\texttt{MyConstructor})\;
+        Čekání a poté zabrání volného pracoviště\;
+        Zavolání metody počátku potomka(\texttt{MyStart})\;
         Čekání na dokončení práce\;
         Přičtení položek na odkladové místo pracoviště\;
 		
@@ -180,6 +181,7 @@ Kontrola kvality    &QualityAsOp \\
 \end{table}
 
 
+\newpage
 \section{Podstata simulačních experimentů a jejich průběh}
 Obecným cílem experimentů bylo naýšení produkce, a tím i zisku, simulované firmy.
 
@@ -211,7 +213,7 @@ Ve výchozím modelu jsou pracoviště \uv{řezání přírubových profilů} a 
 
 
 \subsubsection{Navrhovaná úprava rozmístění}
-V tomto experimentu bylo simulováno nové rozmístění jednotlivých stanic podle návrhu v TODO. To bylo provedeno přenastavením časů pro transport mezi stanicemi dle zdroje. Následná simulace tohoto experimentu potvrdila zrychlení výroby jednoho kusu z 20 minut na 18.85 minut, což odpovídá zdroji.
+V tomto experimentu bylo simulováno nové rozmístění jednotlivých stanic podle návrhu v \cite[str. 51]{bp}. To bylo provedeno přenastavením časů pro transport mezi stanicemi dle zdroje. Následná simulace tohoto experimentu potvrdila zrychlení výroby jednoho kusu z 20 minut na 18.85 minut, což odpovídá zdroji.
 
 
 \subsubsection{Dávkové předávání}
@@ -233,15 +235,13 @@ Vedlejším efektem zařazení pomocného pracovníka bylo zvýšení průměrn�
 
 V experimentu s více zaměstnanci pro přenášení se již produkce téměř nezvýšila, pouze se zanedbatelně snížil průměrný čas výroby jednoho produktu, stále však nedosáhl na hodnotu bez přenašečů.
 
-\subsubsection{Kombinované experimenty}
-V závěru byly provedeny experimenty, využívající více optimalizací najednou. TODO
-
 \subsection{Závěry experimentů}
 Bylo provedeno TODO experimentů, z nichž lze odvodit efektivitu a výhodnost použití navrhovaných vylepšení v reálné výrobě.
 
 \section{Shrnutí simulačních experimentů a závěr}
 Z provedených experimentů vyplývá, že
 
+\newpage
 \bibliographystyle{czechiso}
 \bibliography{ims}
 
