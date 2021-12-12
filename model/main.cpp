@@ -65,6 +65,8 @@ Init(0, SIM_TIME_SPAN);
         machines[i].SetCapacity(capacities[i]);
     }
 
+    std::queue<int> empty;
+    std::swap( itemsInProduction, empty );
     
 
     (new CuttingOp)->Activate();
