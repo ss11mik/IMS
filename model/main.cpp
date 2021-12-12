@@ -58,21 +58,22 @@ int experiment = 0;
 
 
 void mRun () {
-Init(0, SIM_TIME_SPAN);
+    Init(0, SIM_TIME_SPAN);
     for(int i = 0; i < MACHINES_COUNT; i++)
     {
         machines[i].Clear();
         machines[i].SetCapacity(capacities[i]);
+        storages[i]  = 0;
     }
 
-    std::queue<int> empty;
-    std::swap( itemsInProduction, empty );
+    while(!itemsInProduction.empty()) itemsInProduction.pop();
     
 
     (new CuttingOp)->Activate();
 
-    for (int i = 0; i < posliceksCount; i++)
+    for (int i = 0; i < posliceksCount; i++) {
         (new Poslicek)->Activate();
+    }
 
     Run();
 
@@ -149,6 +150,14 @@ void setup_experiments() {
 
             posliceksCount = 2;
             SetOutput("poslicekModel2.out");
+            mRun();
+
+            posliceksCount = 3;
+            SetOutput("poslicekModel3.out");
+            mRun();
+
+            posliceksCount = 4;
+            SetOutput("poslicekModel4.out");
             mRun();
 
             posliceksCount = 5;
