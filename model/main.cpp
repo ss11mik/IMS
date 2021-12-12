@@ -79,9 +79,6 @@ Init(0, SIM_TIME_SPAN);
     }
     dobaVProdukci.Output();
     dobaVProdukci.Clear();
-
-    Print("zprofiles %d\n",zprofilesGened);
-    Print("cuts %d\n",cutsGenerated);
 }
 
 void setup_experiments() {
@@ -174,9 +171,6 @@ int main(int argc, char* argv[]) {
     machines[6].SetName("PlantingOp");
     machines[7].SetName("QualityAsOp");
 
-
-
-    Print("Zacatek simulace\n");
 
 
     setup_experiments();
