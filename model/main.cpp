@@ -141,15 +141,19 @@ void setup_experiments() {
             //Vyhrazený zaměstnanec pro přenos mezi pracovišti
 
             posliceksCount = 0;
+            SetOutput("poslicekModel0.out");
             mRun();
 
             posliceksCount = 1;
+            SetOutput("poslicekModel1.out");
             mRun();
 
             posliceksCount = 2;
+            SetOutput("poslicekModel2.out");
             mRun();
 
             posliceksCount = 5;
+            SetOutput("poslicekModel5.out");
             mRun();
             break;
 
