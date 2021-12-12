@@ -83,9 +83,6 @@ public:
                         case 7:
                             (new QualityAsOp)->MyEnd();
                             break;
-                        case 8:
-                            (new ExpeditionOp)->MyEnd();
-                            break;
                     }
                 }
                 storages[maxWaitingIndex] = 0;

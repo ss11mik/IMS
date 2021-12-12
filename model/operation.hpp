@@ -54,7 +54,7 @@ public:
                 //transport
                 if(transportTime != 0)
                 {
-                    Wait(transportTime);//todo: delta
+                    Wait(transportTime);
                 }
 
                 for(int i = 0; i <(*currentStorage); i++)
@@ -62,6 +62,12 @@ public:
                     MyEnd();
                 }
                 *currentStorage = 0;
+
+                // go back
+                if(transportTime != 0)
+                {
+                    Wait(transportTime);
+                }
             }
             machine->Leave(1);
         }
