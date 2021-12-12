@@ -24,6 +24,5 @@ class Cutting2Op : public Operation{public: void MyConstructor();void MyEnd();};
 class CompletionOp : public Operation{public: void MyConstructor();void MyEnd();};
 class PlantingOp : public Operation{public: void MyConstructor();void MyEnd();};
 class QualityAsOp : public Operation{public: void MyConstructor();void MyEnd();};
-class ExpeditionOp : public Operation{public: void MyConstructor();void MyEnd();};
 
 #endif

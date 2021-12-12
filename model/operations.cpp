@@ -108,8 +108,6 @@ void PlantingOp::MyConstructor(){
     this->transportTime = (usingOptimizedTransport)? 0.5f :1.0f;
 }
 void PlantingOp::MyEnd(){
-    //TODO: product is completed. calculate the total time
-    //TODO: Sklaodvani
     (new QualityAsOp)->Activate();
 }
 
@@ -125,18 +123,5 @@ void QualityAsOp::MyConstructor(){
 void QualityAsOp::MyEnd(){
     dobaVProdukci(Time - itemsInProduction.front());
     itemsInProduction.pop();
- //    (new ExpeditionOp)->Activate();
 }
 
-
-void ExpeditionOp::MyConstructor(){
-    this->avgTime = 30;
-    this->machine = machines[8];
-    this->currentStorage = &storages[8];
-    this->transportTime = 0;
-}
-void ExpeditionOp::MyEnd(){
-    dobaVProdukci(Time - itemsInProduction.front());
-    itemsInProduction.pop();
-    //TODO: void
-}

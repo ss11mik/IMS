@@ -93,7 +93,7 @@ public:
                 didSth = true;
             }
         } while (didSth);
-        //TODO dowo si prervu. Idzie palic
+        //dowo si prervu. Idzie palic
         //pls . hilfe. rutunku.
         Wait(10);
         (new Poslicek)->Activate();
