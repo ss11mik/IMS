@@ -42,21 +42,20 @@
 
 
 \section{Úvod}
-V této práci je popsán simulační model výroby hranatého potrubí ve společnosti KLMN spol s.r.o. Na základě modelu a simulačních experimentů budou ukázána slabá místa výroby. Cílem práce je  navrhnout vylepšení výrobního procesu a
+V této práci je popsán simulační model\cite[str. 10]{ims} výroby hranatého potrubí ve společnosti KLMN spol s r.o. Na základě modelu a simulačních experimentů\cite[str. 33]{ims} budou ukázána slabá místa výroby. Cílem práce je  navrhnout vylepšení výrobního procesu a
 %zjistit, zda je možné tato slabá místa vylepšit či odstranit a navrhnout další vylepšení výrobního procesu a
 experimenty potvrdit či vyvrátit jejich účinnost.
+
 \subsection{Autoři a zdroje informací}
-Autory projektu jsou David Podeszwa a Ondřej Mikula.
-
-
-Informace byly čerpány z bakalářské práce \href{http://digilib.k.utb.cz/bitstream/handle/10563/22155/%20ih%C3%A1k_2012_bp.pdf?sequence=1}{Analýza současného výrobního procesu ve
+Autory projektu jsou David Podeszwa a Ondřej Mikula. Informace byly čerpány z bakalářské práce \href{http://digilib.k.utb.cz/bitstream/handle/10563/22155/%20ih%C3%A1k_2012_bp.pdf?sequence=1}{Analýza současného výrobního procesu ve
 vybrané firmě}\cite{bp}.
+
 \subsection{Ověření validity}
-Konkrétní informace o výrobě byly čerpány z uvedené bakalářské práce, jejíž autor získal informace přímo od dané firmy, a tudíž by měly být přesné. Prvotní experiment na výchozím modelu ověřil, že průměrná doba výroby produktu se shoduje s dobou uvedenou ve zdroji.
+Konkrétní informace o výrobě byly čerpány z uvedené bakalářské práce, jejíž autor získal informace přímo od dané firmy, a tudíž by měly být přesné. Prvotní experiment na výchozím modelu ověřil\cite[str. 10]{ims}, že průměrná doba výroby produktu se shoduje s dobou uvedenou ve zdroji.
 
 
 \section{Rozbor tématu a použitých metod/technologií}
-Tématem simulace je výroba hranatého potrubí. Samotný proces výroby je rozdělen do více částí. Materiál použitý k výrobě je pouze jeden, a to pozinkovaný plech.% Výrobu zahajuje střihač, který na stroji nastříhá tento plech dle potřebných rozměrů.
+Tématem simulace je výroba hranatého potrubí. Samotný proces výroby je rozdělen do více částí. Materiál použitý k výrobě je pouze jeden, a to pozinkovaný plech. % Výrobu zahajuje střihač, který na stroji nastříhá tento plech dle potřebných rozměrů.
 Celý proces začíná naskladněním materiálu při vykládce z dodávky. Ze skladu materiál putuje napříč stanovišti, kde se z polotovaru postupně stává hotový výrobek. Výrobní postup je rozepsán v tabulce \ref{rgrg}. Některé z operací vyžadují práci dvou zaměstnanců současně.
 
 \begin{table}[H]
@@ -86,12 +85,12 @@ Po posledním kroku je trubka odnesena do skladu, kde čeká na expedici násled
 Práce probíhá v jedné, osmihodinové, směně. Firma KLMN s r.o. zaměstnává 13 pracovníků ve výrobě, a to na plný úvazek.
 
 \subsection{Použité postupy}
-Pro vytvoření simulačního modelu byl použit jazyk C++ a jeho standardní knihovny společně s knihovnou SIMLIB\cite{simlib}. Ta obsahuje veškeré nástroje potřebné pro vytvoření simulačního modelu systému hromadné obsluhy\cite{ims}.
+Pro vytvoření simulačního modelu byl použit jazyk C++ a jeho standardní knihovny společně s knihovnou SIMLIB\cite{simlib}. Ta obsahuje veškeré nástroje potřebné pro vytvoření simulačního modelu systému hromadné obsluhy\cite[str. 136]{ims}.
 \subsection{Původ použitých postupů}
 \begin{itemize}
     \item Pro implementaci byl použit programovací jazyk C++ konkrétně kompilováno se standardem C++17. - \href{https://en.cppreference.com/w/cpp}{\texttt{https://en.cppreference.com/w/cpp}}
     \item Knihovna SIMLIB -  \href{http://www.fit.vutbr.cz/~peringer/SIMLIB/}{\texttt{http://www.fit.vutbr.cz/$\sim$peringer/SIMLIB/}}
-    \item Nástroj GNU make. Použit k automatizaci kompilace -  \href{https://www.gnu.org/software/make/}{\texttt{https://www.gnu.org/software/make/}}
+    \item Nástroj GNU Make. Použit k automatizaci kompilace -  \href{https://www.gnu.org/software/make/}{\texttt{https://www.gnu.org/software/make/}}
 \end{itemize}
 
 \section{Koncepce}
@@ -108,13 +107,13 @@ Simulační model pracuje tak, že na 1. stupni výroby se vytváří (generují
 
 Spuštěním modelu lze vyzískat primárně dvě statistiky: počet vyprodukovaných výrobků a průměrnmou dobu vyrábění jednoho výrobku. Podrobněji lze sledovat procentuální vytíženost jednotlivých pracovišť a případné fronty tvořící se před nimi.
 
-Simulace je většinou spouštěna na dobu 10 týdnů, během kterých se zahladí počáteční zpoždění, způsobené náběhem celé výrobní linky (na počátku simulace pracuje jen 1. pracoviště, ostatní čekají, až se k nim dostanou polotovary, které mohou zpracovávat).
+Simulace je většinou spouštěna na dobu\cite[str. 21]{ims} 10 týdnů, během kterých se zahladí počáteční zpoždění, způsobené náběhem celé výrobní linky (na počátku simulace pracuje jen 1. pracoviště, ostatní čekají, až se k nim dostanou polotovary, které mohou zpracovávat).
 
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=17cm]{orig}
-    \caption{Petriho síť původního výrobního postupu}
+    \caption{Petriho síť\cite[str. 123]{ims} původního výrobního postupu}
     \label{orig}
 \end{figure}
 
