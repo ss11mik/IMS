@@ -86,7 +86,7 @@ void setup_experiments() {
     switch (experiment) {
         case 0:
         case 1:
-            //defasult
+            //default
 
             mRun();
             break;
