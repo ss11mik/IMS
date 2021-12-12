@@ -79,9 +79,6 @@ void mRun () {
     }
     dobaVProdukci.Output();
     dobaVProdukci.Clear();
-
-    Print("zprofiles %d\n",zprofilesGened);
-    Print("cuts %d\n",cutsGenerated);
 }
 
 void setup_experiments() {
