@@ -23,7 +23,7 @@ using namespace simlib3;
 
 // the time span of simulation
 // 60 * 8 * 7 minutes * 10 = 10 weeks
-#define SIM_TIME_SPAN 3360
+#define SIM_TIME_SPAN 33600
 
 int minTransports = 1;
 
