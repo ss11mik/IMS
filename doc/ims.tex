@@ -51,28 +51,27 @@ Autory projektu jsou David Podeszwa a Ondřej Mikula.
 Informace byly čerpány z bakalářské práce \href{http://digilib.k.utb.cz/bitstream/handle/10563/22155/%20ih%C3%A1k_2012_bp.pdf?sequence=1}{Analýza současného výrobního procesu ve 
 vybrané firmě}. TODO:%%TODO: Bibtext citace zdroje
 \subsection{Ověření validity}
-Konkrétní informace o výrobě byly čerpány z uvedené bakalářské práce, jejíž autor získal informace přímo od dané firmy, a tudíž by měly být přesné. Prvotní experiment na výchozím modelu ověřil, že průměrná doba výroby produktu se shoduje se s dobou uvedenou ve zdroji.
+Konkrétní informace o výrobě byly čerpány z uvedené bakalářské práce, jejíž autor získal informace přímo od dané firmy, a tudíž by měly být přesné. Prvotní experiment na výchozím modelu ověřil, že průměrná doba výroby produktu se shoduje s dobou uvedenou ve zdroji.
 \section{Rozbor tématu a použitých metod/technologií}
 Tématem simulace je výroba hranatého potrubí. Samotný proces výroby je rozdělen do více částí. Materiál použitý k výrobě je pouze jeden, a to pozinkovaný plech. Výrobu zahajuje střihač, který na stroji nastříhá tento plech dle potřebných rozměrů.
 \begin{table}[H]
     \centering
-    \begin{tabular}{|l|l|l|}
-     \hline  & \textbf{operace} &  \textbf{čas [min]}\\ \hline
-    1. &                Stříhání plechu   &  4\\ 
-    2. &\hspace{0.1cm}  Transport   &  0,25\\ \hline
-    3. &                Válcování    &  4\\ 
-    4. &\hspace{0.1cm}  Transport   &  0,25\\ \hline
-    5. &                Ohýbání plechu    &  4\\ 
-    6. &\hspace{0.1cm}  Transport   &  0,25\\ \hline
-    7. &                Uzavírání profilu    &  4\\ 
-    8. &\hspace{0.1cm}  Transport   &  0,25\\ \hline
-    9. &                Řezání přírubových profilů    &  4\\ \hline
-    10. &               Kompletace spojovacích přírub    &  4\\ \hline
-    12. &                Osazení přírubami    &  4\\ 
-    13. &\hspace{0.1cm}  Transport   &  0,25\\ \hline
+    \begin{tabular}{|l|l|l|l|}
+     \hline  & \textbf{operace} &  \textbf{čas [min]} &  \textbf{přenos na další pracoviště [min]}\\ \hline
+    1. &                Stříhání plechu   &  4 &  0,25\\ \hline
+    2. &                Z-profil    &  1,5 &  0,25\\ \hline
+    3. &                Ohýbání plechu    &  2  &  0,5\\ \hline
+    4. &                Uzavírání profilu    & 2 &  1\\  \hline
+    5. &                Řezání přírubových profilů    &  1 &  0\\ \hline
+    6. &               Kompletace spojovacích přírub    &  3 &  0\\ \hline
+    7. &                Osazení přírubami    &  2 &  1\\
+    \hline
+    8. &                Kontrola kvality    & 1  &  N/A\\
+    \hline
+
     
     \end{tabular}
-    \caption{Kapcja}
+    \caption{Výrobní postup}
     \label{rgrg}
 \end{table}
 
@@ -98,27 +97,27 @@ V průběhu experimentu byly použity metody půlení intervalu a záměrného n
 \subsection{Jednotlivé experimenty}
 
 \subsubsection{Validita výchozího modelu}
-První experiment byl proveden nad modelem, simulujícím reálný stav výroby. Porovnáním jeho výstupů s realitou bylo provedeno ověření. Vzhledem ke shodnosti průměrného času výroby jednoho potrubí a výrobní kapacity lze model považovat za validní a pokračovat k dalším experimentům. V tomto experimentu nedochází k zahlcování a jednotlivá pracoviště jsou zatížena přibližně na 30 až 70 \%.
+První experiment byl proveden nad modelem, simulujícím reálný stav výroby. Porovnáním jeho výstupů s realitou bylo provedeno ověření. Vzhledem ke shodnosti průměrného času výroby jednoho potrubí a výrobní kapacity lze model považovat za validní a pokračovat k dalším experimentům. V tomto experimentu nedochází k zahlcování a jednotlivá pracoviště jsou zatížena přibližně na 20 až 70 \%.
 
 
 
 \subsubsection{Úzká místa}
-Úvodním experimentem byla identifikována úzká místa ve výrobě - tedy stanoviště, která brzdí výrobu a na která musí následující stanoviště čekat. Hlavními ukazateli byly vytíženost stanoviště, tedy kolik procent času bylo využito, a velikost fronty, která se před ním tvořila.
+Následným experimentem byla identifikována úzká místa ve výrobě - tedy stanoviště, která brzdí výrobu a na která musí následující stanoviště čekat. Hlavními ukazateli byly vytíženost stanoviště, tedy kolik procent času bylo využito, a velikost fronty, která se před ním tvořila.
 
 Ve stavu odpovídajícím realitě je nejvíce vytíženo 1. pracoviště (stříhání plechu), díky čemuž další stíhají a nikde nevznikají fronty. Prvním logickým krokem tedy bylo navýšit produkitivitu tohoto stanoviště.
 
 Jednoduchá simulace zdvojení tohoto stanoviště (tedy zakoupení 2. stejného stroje a přijmutí dalšího zaměstnance, či práce na jednom stroji na 2 směny) ukázala, že před stanicí pro kompletaci (3.) a osazování (4.) by se začaly tvořit fronty (které s postupem času jen narůstají).
 
-Metodou půlení intervalu bylo následně zjištěno, že při zachování plynulosti celé výroby lze efektivitu stříhání plechu navýšit až o 41 \% (při vyšších hodnotách se již začnou tvořit stále se zvyšující fronty). Tím se celková produkce navýší o odpovídajících 41 \%.
+Metodou půlení intervalu bylo následně zjištěno, že při zachování plynulosti celé výroby lze efektivitu stříhání plechu navýšit až o 41 \% (při vyšších hodnotách se již začnou tvořit stále se zvětšující fronty). Tím se celková produkce navýší o odpovídajících 41 \%.
 
 \subsubsection{Nevyužitá práce}
 Další experiment se zaobírá opačným problémem - identifikací pracovišť, která jsou málo využita a experimentováním, jak tento negavitní jev eliminovat.
 
-Ve výchozím modelu jsou pracoviště \uv{řezání přírubových profilů} a \uv{kontrola kvality} nejméně využita - na 24, resp. 29 \%. Při snížení jejich   kapacity na polovinu jsou stále využity jen na 47 a 59 \%. Z toho vyplývá, že zaměstnanci na těchto stanovištích mohou pracovat na poloviční úvazek - za udržení produktivity výroby a navýšení průměrného času na jednu trubku na minut.
+Ve výchozím modelu jsou pracoviště \uv{řezání přírubových profilů} a \uv{kontrola kvality} nejméně využita - na 24, resp. 29 \%. Při snížení jejich výrobní kapacity na polovinu jsou stále využity jen na 47 a 59 \%. Z toho vyplývá, že zaměstnanci na těchto stanovištích mohou pracovat na poloviční úvazek - za udržení produktivity výroby a navýšení průměrného času výroby jedné trubky na TODO minut.
 
 
 \subsubsection{Navrhovaná úprava rozmístění}
-V tomto experimentu bylo simulováno nové rozmístění jednotlivých stanic podle návrhu v TODO. To bylo provedeno přenastavením časů pro transport mezi stanicemi dle zdroje. Následná simulace tohoto experimentu potvrdila zrychlení výroby jednoho kusu z 20 minut na 18.85 minut.
+V tomto experimentu bylo simulováno nové rozmístění jednotlivých stanic podle návrhu v TODO. To bylo provedeno přenastavením časů pro transport mezi stanicemi dle zdroje. Následná simulace tohoto experimentu potvrdila zrychlení výroby jednoho kusu z 20 minut na 18.85 minut, což odpovídá zdroji.
 
 
 \subsubsection{Dávkové předávání}
@@ -130,7 +129,9 @@ Předpoklad, že průměrná doba pro vyrobení jednoho kusu se zvětší, se po
 \subsubsection{Vyhrazený zaměstnanec pro přenos mezi pracovišti}
 Tento experiment simuluje přijetí nového zaměstnance, jehož pracovní náplní by bylo pouze přenášet polotovary mezi jednotlivými stanovišti.
 
-Simulace chodu výroby s jedním takovým zaměstnancem ukázala, že produkce firmy by se zvýšila asi o 6 \%. Nový zaměstananec by tvořil 1/13, tedy cca 8 \%, zaměstanců, ovšem potřeboval by prakticky nulovou kvalifikaci a tedy nižší plat, jeho zařazení by tudíž mohlo být pro firmu výhodné.
+Nový zaměstnanec se řídí pro zjednodušení následujícím algoritmem: Zjistí, u kterého stanoviště je nahromaděno nejvíce polotovarů, a ty přenese.
+
+Simulace chodu výroby s jedním takovým zaměstnancem ukázala, že produkce firmy by se zvýšila asi o 6 \%. Nový zaměstananec by tvořil 1/13, tedy cca 8 \%, zaměstanců, ovšem potřeboval by prakticky nulovou kvalifikaci a tedy nižší mzdu, jeho zařazení by tudíž mohlo být pro firmu výhodné.
 
 Vedlejším efektem zařazení pomocného pracovníka bylo zvýšení průměrné doby výroby jednoho produktu, a to o více než dvojnásobek. Tato veličina ovšem ovlivňuje pouze dobu náběhu ze zastavení do plné produkce.
 
