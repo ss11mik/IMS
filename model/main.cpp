@@ -20,16 +20,29 @@
 using namespace simlib3;
 
 //======== editablke simulation parameters ========
-int minTransports = 1;
-int cuttingTrottlePercent = 0;
-bool usingOptimizedTransport = false;
-int posliceksCount = 0;
 
 // the time span of simulation
 // 60 * 8 * 7 minutes * 100 = 100 weeks
 #define SIM_TIME_SPAN 33600
 
-int capacities[] = {1, 1, 1, 1, 1, 1, 1, 1};
+int minTransports = 1;
+
+
+int cuttingTrottlePercent = 0;
+// the threshold before clogging
+//int cuttingTrottlePercent = 41;
+
+
+bool usingOptimizedTransport = false;
+
+
+int posliceksCount = 0;
+
+
+//int capacities[] = {1, 1, 1, 1, 1, 1, 1, 1};
+// helf production on Cutting2Op and QualityAsOp
+int capacities[] = {2, 2, 2, 2, 1, 2, 2, 1};
+
 //======== editablke simulation parameters ========
 
 
