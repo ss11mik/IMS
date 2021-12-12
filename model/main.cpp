@@ -176,9 +176,6 @@ int main(int argc, char* argv[]) {
 
 
 
-    Print("Zacatek simulace\n");
-
-
     setup_experiments();
 
 
